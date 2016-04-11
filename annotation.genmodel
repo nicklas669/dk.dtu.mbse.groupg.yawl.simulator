@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.mbse.groupg.yawl.simulator/src" modelPluginID="dk.dtu.mbse.groupg.yawl.simulator"
+    modelName="Annotation" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>annotations.ecore</foreignModel>
+  <genPackages prefix="Annotations" disposableProviderFactory="true" ecorePackage="annotations.ecore#/">
+    <genClasses ecoreClass="annotations.ecore#//EnabledTransition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/sourceTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/targetTransition"/>
+    </genClasses>
+    <genClasses ecoreClass="annotations.ecore#//SelectArc">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//SelectArc/selected"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//SelectArc/outArcs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//SelectArc/inArcs"/>
+    </genClasses>
+    <genClasses ecoreClass="annotations.ecore#//Marking">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//Marking/value"/>
+    </genClasses>
+    <genClasses ecoreClass="annotations.ecore#//ObjectAnnotation"/>
+    <genClasses image="false" ecoreClass="annotations.ecore#//TextualAnnotation">
+      <genOperations ecoreOperation="annotations.ecore#//TextualAnnotation/getAnnotationAttribute"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
