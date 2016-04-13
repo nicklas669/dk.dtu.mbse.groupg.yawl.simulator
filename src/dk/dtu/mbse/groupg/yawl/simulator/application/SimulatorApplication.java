@@ -3,13 +3,9 @@ package dk.dtu.mbse.groupg.yawl.simulator.application;
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
 import org.pnml.tools.epnk.applications.ApplicationWithUIManager;
-import org.pnml.tools.epnk.applications.ui.ApplicationUIManager;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
-
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
@@ -49,6 +45,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		 * Then create the corresponding annotations for each object that should
 		 * have an overlay in the initial situation; 
 		 */
+		
 		EnabledTransition enabledTransition = AnnotationsFactory.eINSTANCE.createEnabledTransition();
 		SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
 		//Marking marking = AnnotationsFactory.eINSTANCE.createMarking();
@@ -59,6 +56,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		 and for the the new Annotaions defined in 2., you also need to set the
 		 * other features and references.
 		 */		
+		
 
 		// Then, add it to the netannotation by calling
 		 netannotation.getObjectAnnotations().add(enabledTransition);
