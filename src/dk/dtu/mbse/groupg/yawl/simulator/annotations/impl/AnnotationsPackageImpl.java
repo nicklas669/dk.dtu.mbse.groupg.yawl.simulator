@@ -1,22 +1,21 @@
 /**
  */
-package annotations.impl;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 
-import annotations.AnnotationsFactory;
-import annotations.AnnotationsPackage;
-import annotations.EnabledTransition;
-import annotations.Marking;
-import annotations.ObjectAnnotation;
-import annotations.SelectArc;
-import annotations.TextualAnnotation;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.pnml.tools.epnk.annotations.netannotations.NetannotationsPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,20 +46,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 	private EClass markingEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass objectAnnotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass textualAnnotationEClass = null;
-
-	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -71,7 +56,7 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see annotations.AnnotationsPackage#eNS_URI
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -105,6 +90,9 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 		AnnotationsPackageImpl theAnnotationsPackage = (AnnotationsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof AnnotationsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new AnnotationsPackageImpl());
 
 		isInited = true;
+
+		// Initialize simple dependencies
+		NetannotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAnnotationsPackage.createPackageContents();
@@ -207,33 +195,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getObjectAnnotation() {
-		return objectAnnotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTextualAnnotation() {
-		return textualAnnotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getTextualAnnotation__GetAnnotationAttribute() {
-		return textualAnnotationEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public AnnotationsFactory getAnnotationsFactory() {
 		return (AnnotationsFactory)getEFactoryInstance();
 	}
@@ -268,11 +229,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 
 		markingEClass = createEClass(MARKING);
 		createEAttribute(markingEClass, MARKING__VALUE);
-
-		objectAnnotationEClass = createEClass(OBJECT_ANNOTATION);
-
-		textualAnnotationEClass = createEClass(TEXTUAL_ANNOTATION);
-		createEOperation(textualAnnotationEClass, TEXTUAL_ANNOTATION___GET_ANNOTATION_ATTRIBUTE);
 	}
 
 	/**
@@ -298,17 +254,19 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		NetannotationsPackage theNetannotationsPackage = (NetannotationsPackage)EPackage.Registry.INSTANCE.getEPackage(NetannotationsPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		enabledTransitionEClass.getESuperTypes().add(this.getObjectAnnotation());
-		selectArcEClass.getESuperTypes().add(this.getObjectAnnotation());
-		markingEClass.getESuperTypes().add(this.getTextualAnnotation());
-		markingEClass.getESuperTypes().add(this.getObjectAnnotation());
+		enabledTransitionEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
+		selectArcEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
+		markingEClass.getESuperTypes().add(theNetannotationsPackage.getTextualAnnotation());
 
-		// Initialize classes, features, and operations; add parameters
+		// Initialize classes and features; add operations and parameters
 		initEClass(enabledTransitionEClass, EnabledTransition.class, "EnabledTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnabledTransition_SourceTransition(), this.getSelectArc(), null, "sourceTransition", null, 0, 1, EnabledTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEnabledTransition_TargetTransition(), this.getSelectArc(), null, "targetTransition", null, 0, 1, EnabledTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -320,12 +278,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 
 		initEClass(markingEClass, Marking.class, "Marking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMarking_Value(), ecorePackage.getEInt(), "value", "1", 0, 1, Marking.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(objectAnnotationEClass, ObjectAnnotation.class, "ObjectAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(textualAnnotationEClass, TextualAnnotation.class, "TextualAnnotation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getTextualAnnotation__GetAnnotationAttribute(), ecorePackage.getEAttribute(), "getAnnotationAttribute", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

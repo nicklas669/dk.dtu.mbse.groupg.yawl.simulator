@@ -1,6 +1,6 @@
 /**
  */
-package annotations;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,17 +9,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see annotations.Package
+ * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage
  * @generated
  */
-public interface Factory extends EFactory {
+public interface AnnotationsFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	Factory eINSTANCE = annotations.impl.FactoryImpl.init();
+	AnnotationsFactory eINSTANCE = dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Enabled Transition</em>'.
@@ -49,21 +49,12 @@ public interface Factory extends EFactory {
 	Marking createMarking();
 
 	/**
-	 * Returns a new object of class '<em>Object Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object Annotation</em>'.
-	 * @generated
-	 */
-	ObjectAnnotation createObjectAnnotation();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	Package getPackage();
+	AnnotationsPackage getAnnotationsPackage();
 
-} //Factory
+} //AnnotationsFactory

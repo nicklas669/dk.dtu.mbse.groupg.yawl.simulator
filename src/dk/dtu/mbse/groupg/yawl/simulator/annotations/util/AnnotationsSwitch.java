@@ -1,11 +1,17 @@
 /**
  */
-package annotations.util;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.util;
 
-import annotations.*;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.util.Switch;
+
+import org.pnml.tools.epnk.annotations.netannotations.Annotation;
+import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
+import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,17 +23,17 @@ import org.eclipse.emf.ecore.EPackage;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see annotations.Package
+ * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage
  * @generated
  */
-public class Switch<T> extends Switch<T> {
+public class AnnotationsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static Package modelPackage;
+	protected static AnnotationsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -35,9 +41,9 @@ public class Switch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Switch() {
+	public AnnotationsSwitch() {
 		if (modelPackage == null) {
-			modelPackage = Package.eINSTANCE;
+			modelPackage = AnnotationsPackage.eINSTANCE;
 		}
 	}
 
@@ -64,37 +70,26 @@ public class Switch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case Package.ENABLED_TRANSITION: {
+			case AnnotationsPackage.ENABLED_TRANSITION: {
 				EnabledTransition enabledTransition = (EnabledTransition)theEObject;
 				T result = caseEnabledTransition(enabledTransition);
 				if (result == null) result = caseObjectAnnotation(enabledTransition);
+				if (result == null) result = caseAnnotation(enabledTransition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Package.SELECT_ARC: {
+			case AnnotationsPackage.SELECT_ARC: {
 				SelectArc selectArc = (SelectArc)theEObject;
 				T result = caseSelectArc(selectArc);
 				if (result == null) result = caseObjectAnnotation(selectArc);
+				if (result == null) result = caseAnnotation(selectArc);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Package.MARKING: {
+			case AnnotationsPackage.MARKING: {
 				Marking marking = (Marking)theEObject;
 				T result = caseMarking(marking);
 				if (result == null) result = caseTextualAnnotation(marking);
-				if (result == null) result = caseObjectAnnotation(marking);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case Package.OBJECT_ANNOTATION: {
-				ObjectAnnotation objectAnnotation = (ObjectAnnotation)theEObject;
-				T result = caseObjectAnnotation(objectAnnotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case Package.TEXTUAL_ANNOTATION: {
-				TextualAnnotation textualAnnotation = (TextualAnnotation)theEObject;
-				T result = caseTextualAnnotation(textualAnnotation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -148,6 +143,21 @@ public class Switch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotation(Annotation object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Object Annotation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -193,4 +203,4 @@ public class Switch<T> extends Switch<T> {
 		return null;
 	}
 
-} //Switch
+} //AnnotationsSwitch

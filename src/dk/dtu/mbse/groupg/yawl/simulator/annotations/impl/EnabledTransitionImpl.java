@@ -1,10 +1,10 @@
 /**
  */
-package annotations.impl;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 
-import annotations.AnnotationsPackage;
-import annotations.EnabledTransition;
-import annotations.SelectArc;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,8 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link annotations.impl.EnabledTransitionImpl#getSourceTransition <em>Source Transition</em>}</li>
- *   <li>{@link annotations.impl.EnabledTransitionImpl#getTargetTransition <em>Target Transition</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.EnabledTransitionImpl#getSourceTransition <em>Source Transition</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.EnabledTransitionImpl#getTargetTransition <em>Target Transition</em>}</li>
  * </ul>
  *
  * @generated

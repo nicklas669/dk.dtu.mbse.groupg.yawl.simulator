@@ -2,11 +2,11 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="annotations" nsURI="http://www2.compute.dtu.dk/annotations"
     nsPrefix="anno">
-  <eClassifiers xsi:type="ecore:EClass" name="EnabledTransition" eSuperTypes="#//ObjectAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="EnabledTransition" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTransition" eType="#//SelectArc"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetTransition" eType="#//SelectArc"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectArc" eSuperTypes="#//ObjectAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="SelectArc" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false" volatile="true" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
@@ -14,12 +14,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="inArcs" upperBound="-1"
         eType="#//EnabledTransition"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Marking" eSuperTypes="#//TextualAnnotation #//ObjectAnnotation">
+  <eClassifiers xsi:type="ecore:EClass" name="Marking" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//TextualAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ObjectAnnotation"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TextualAnnotation" abstract="true">
-    <eOperations name="getAnnotationAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -1,8 +1,8 @@
 /**
  */
-package annotations.util;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.util;
 
-import annotations.*;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -11,12 +11,16 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.pnml.tools.epnk.annotations.netannotations.Annotation;
+import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
+import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see annotations.AnnotationsPackage
+ * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage
  * @generated
  */
 public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
@@ -80,6 +84,10 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 				return createMarkingAdapter();
 			}
 			@Override
+			public Adapter caseAnnotation(Annotation object) {
+				return createAnnotationAdapter();
+			}
+			@Override
 			public Adapter caseObjectAnnotation(ObjectAnnotation object) {
 				return createObjectAnnotationAdapter();
 			}
@@ -108,13 +116,13 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link annotations.EnabledTransition <em>Enabled Transition</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition <em>Enabled Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see annotations.EnabledTransition
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition
 	 * @generated
 	 */
 	public Adapter createEnabledTransitionAdapter() {
@@ -122,13 +130,13 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link annotations.SelectArc <em>Select Arc</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc <em>Select Arc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see annotations.SelectArc
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc
 	 * @generated
 	 */
 	public Adapter createSelectArcAdapter() {
@@ -136,13 +144,13 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link annotations.Marking <em>Marking</em>}'.
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking <em>Marking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see annotations.Marking
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking
 	 * @generated
 	 */
 	public Adapter createMarkingAdapter() {
@@ -150,13 +158,27 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link annotations.ObjectAnnotation <em>Object Annotation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.annotations.netannotations.Annotation <em>Annotation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see annotations.ObjectAnnotation
+	 * @see org.pnml.tools.epnk.annotations.netannotations.Annotation
+	 * @generated
+	 */
+	public Adapter createAnnotationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation <em>Object Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation
 	 * @generated
 	 */
 	public Adapter createObjectAnnotationAdapter() {
@@ -164,13 +186,13 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link annotations.TextualAnnotation <em>Textual Annotation</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation <em>Textual Annotation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see annotations.TextualAnnotation
+	 * @see org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation
 	 * @generated
 	 */
 	public Adapter createTextualAnnotationAdapter() {

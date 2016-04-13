@@ -1,8 +1,8 @@
 /**
  */
-package annotations.impl;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 
-import annotations.*;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -59,7 +59,6 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 			case AnnotationsPackage.ENABLED_TRANSITION: return createEnabledTransition();
 			case AnnotationsPackage.SELECT_ARC: return createSelectArc();
 			case AnnotationsPackage.MARKING: return createMarking();
-			case AnnotationsPackage.OBJECT_ANNOTATION: return createObjectAnnotation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -93,16 +92,6 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	public Marking createMarking() {
 		MarkingImpl marking = new MarkingImpl();
 		return marking;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ObjectAnnotation createObjectAnnotation() {
-		ObjectAnnotationImpl objectAnnotation = new ObjectAnnotationImpl();
-		return objectAnnotation;
 	}
 
 	/**

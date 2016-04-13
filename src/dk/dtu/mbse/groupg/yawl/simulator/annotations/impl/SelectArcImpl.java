@@ -1,10 +1,10 @@
 /**
  */
-package annotations.impl;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 
-import annotations.AnnotationsPackage;
-import annotations.EnabledTransition;
-import annotations.SelectArc;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 
 import java.util.Collection;
 
@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Select Arc</b></em>'.
@@ -22,9 +24,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link annotations.impl.SelectArcImpl#isSelected <em>Selected</em>}</li>
- *   <li>{@link annotations.impl.SelectArcImpl#getOutArcs <em>Out Arcs</em>}</li>
- *   <li>{@link annotations.impl.SelectArcImpl#getInArcs <em>In Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#isSelected <em>Selected</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#getOutArcs <em>Out Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#getInArcs <em>In Arcs</em>}</li>
  * </ul>
  *
  * @generated

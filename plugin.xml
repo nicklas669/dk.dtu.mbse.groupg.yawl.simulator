@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated annotations -->
+      <package
+            uri="http://www2.compute.dtu.dk/annotations"
+            class="dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage"
+            genModel="annotations.genmodel"/>
+   </extension>
+
+</plugin>

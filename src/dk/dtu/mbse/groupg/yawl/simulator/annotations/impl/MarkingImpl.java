@@ -1,25 +1,28 @@
 /**
  */
-package annotations.impl;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 
-import annotations.AnnotationsPackage;
-import annotations.Marking;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.pnml.tools.epnk.annotations.netannotations.impl.TextualAnnotationImpl;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Marking</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Marking</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link annotations.impl.MarkingImpl#getValue <em>Value</em>}</li>
+ * <li>
+ * {@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.MarkingImpl#getValue
+ * <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -27,8 +30,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -37,8 +40,8 @@ public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -46,17 +49,28 @@ public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 	protected int value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MarkingImpl() {
 		super();
 	}
+	
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	@Override
+	public EAttribute getAnnotationAttribute() {
+		// TODO Auto-generated method stub
+		return AnnotationsPackage.eINSTANCE.getMarking_Value();
+	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -65,8 +79,8 @@ public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -74,8 +88,8 @@ public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setValue(int newValue) {
@@ -86,71 +100,72 @@ public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AnnotationsPackage.MARKING__VALUE:
-				return getValue();
+		case AnnotationsPackage.MARKING__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AnnotationsPackage.MARKING__VALUE:
-				setValue((Integer)newValue);
-				return;
+		case AnnotationsPackage.MARKING__VALUE:
+			setValue((Integer) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AnnotationsPackage.MARKING__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case AnnotationsPackage.MARKING__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AnnotationsPackage.MARKING__VALUE:
-				return value != VALUE_EDEFAULT;
+		case AnnotationsPackage.MARKING__VALUE:
+			return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy())
+			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");
@@ -159,4 +174,4 @@ public class MarkingImpl extends TextualAnnotationImpl implements Marking {
 		return result.toString();
 	}
 
-} //MarkingImpl
+} // MarkingImpl

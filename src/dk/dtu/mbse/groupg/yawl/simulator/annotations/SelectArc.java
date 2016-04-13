@@ -1,8 +1,10 @@
 /**
  */
-package annotations;
+package dk.dtu.mbse.groupg.yawl.simulator.annotations;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,12 +15,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link annotations.SelectArc#isSelected <em>Selected</em>}</li>
- *   <li>{@link annotations.SelectArc#getOutArcs <em>Out Arcs</em>}</li>
- *   <li>{@link annotations.SelectArc#getInArcs <em>In Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#isSelected <em>Selected</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getOutArcs <em>Out Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getInArcs <em>In Arcs</em>}</li>
  * </ul>
  *
- * @see annotations.AnnotationsPackage#getSelectArc()
+ * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getSelectArc()
  * @model
  * @generated
  */
@@ -33,7 +35,7 @@ public interface SelectArc extends ObjectAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Selected</em>' attribute.
-	 * @see annotations.AnnotationsPackage#getSelectArc_Selected()
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getSelectArc_Selected()
 	 * @model default="false" changeable="false" volatile="true"
 	 * @generated
 	 */
@@ -41,7 +43,7 @@ public interface SelectArc extends ObjectAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>Out Arcs</b></em>' reference list.
-	 * The list contents are of type {@link annotations.EnabledTransition}.
+	 * The list contents are of type {@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Out Arcs</em>' reference list isn't clear,
@@ -49,7 +51,7 @@ public interface SelectArc extends ObjectAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Out Arcs</em>' reference list.
-	 * @see annotations.AnnotationsPackage#getSelectArc_OutArcs()
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getSelectArc_OutArcs()
 	 * @model
 	 * @generated
 	 */
@@ -57,7 +59,7 @@ public interface SelectArc extends ObjectAnnotation {
 
 	/**
 	 * Returns the value of the '<em><b>In Arcs</b></em>' reference list.
-	 * The list contents are of type {@link annotations.EnabledTransition}.
+	 * The list contents are of type {@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Arcs</em>' reference list isn't clear,
@@ -65,7 +67,7 @@ public interface SelectArc extends ObjectAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Arcs</em>' reference list.
-	 * @see annotations.AnnotationsPackage#getSelectArc_InArcs()
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getSelectArc_InArcs()
 	 * @model
 	 * @generated
 	 */
