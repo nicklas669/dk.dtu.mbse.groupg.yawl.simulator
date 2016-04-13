@@ -89,7 +89,9 @@ public class AnnotationsSwitch<T> extends Switch<T> {
 			case AnnotationsPackage.MARKING: {
 				Marking marking = (Marking)theEObject;
 				T result = caseMarking(marking);
+				if (result == null) result = caseObjectAnnotation(marking);
 				if (result == null) result = caseTextualAnnotation(marking);
+				if (result == null) result = caseAnnotation(marking);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

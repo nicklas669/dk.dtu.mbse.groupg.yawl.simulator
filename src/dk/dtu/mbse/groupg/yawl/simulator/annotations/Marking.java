@@ -2,6 +2,7 @@
  */
 package dk.dtu.mbse.groupg.yawl.simulator.annotations;
 
+import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
 
 /**
@@ -20,7 +21,7 @@ import org.pnml.tools.epnk.annotations.netannotations.TextualAnnotation;
  * @model
  * @generated
  */
-public interface Marking extends TextualAnnotation {
+public interface Marking extends ObjectAnnotation, TextualAnnotation {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * The default value is <code>"1"</code>.

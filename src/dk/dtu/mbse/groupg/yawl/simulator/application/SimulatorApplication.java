@@ -1,12 +1,16 @@
 package dk.dtu.mbse.groupg.yawl.simulator.application;
 
+import java.util.Iterator;
+
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
 import org.pnml.tools.epnk.applications.ApplicationWithUIManager;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
+import yawlnet.yawltypes.Place;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
 	
@@ -48,7 +52,25 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		
 		EnabledTransition enabledTransition = AnnotationsFactory.eINSTANCE.createEnabledTransition();
 		SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
-		//Marking marking = AnnotationsFactory.eINSTANCE.createMarking();
+
+		
+		PetriNet pn = this.getPetrinet();
+		
+		Iterator it = pn.eAllContents();
+		
+		while (it.hasNext()) {
+			Object obj = it.next();
+			if(obj instanceof Place) {
+				Place place = (Place) obj;
+				if(place.getType() != null) {
+					Marking marking = AnnotationsFactory.eINSTANCE.createMarking();
+					marking.setObject(place);
+					marking.setValue(1);
+					netannotation.getObjectAnnotations().add(marking);
+				}
+			}
+			
+		}
 		
 		//for each object annotation, you must set the underlying Petri net object that it annotates;
 
@@ -59,8 +81,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		
 
 		// Then, add it to the netannotation by calling
-		 netannotation.getObjectAnnotations().add(enabledTransition);
-		 netannotation.getObjectAnnotations().add(selectArc);
+//		 netannotation.getObjectAnnotations().add(enabledTransition);
+//		 netannotation.getObjectAnnotations().add(selectArc);
 		 //netannotation.getObjectAnnotations().add(marking);
 
 		/*

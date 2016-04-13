@@ -264,6 +264,7 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 		// Add supertypes to classes
 		enabledTransitionEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		selectArcEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
+		markingEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getTextualAnnotation());
 
 		// Initialize classes and features; add operations and parameters

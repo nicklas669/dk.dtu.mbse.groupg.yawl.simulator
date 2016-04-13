@@ -6,8 +6,6 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 
 import yawlnet.yawltypes.YAWLnet;
 
-// TODO chage this to the Path of your YAWL type
-
 public class YAWLSimulatorFactory extends ApplicationFactory {
 
 	@Override

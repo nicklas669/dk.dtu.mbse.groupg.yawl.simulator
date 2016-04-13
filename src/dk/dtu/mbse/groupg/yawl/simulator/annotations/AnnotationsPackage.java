@@ -187,13 +187,31 @@ public interface AnnotationsPackage extends EPackage {
 	int MARKING = 2;
 
 	/**
+	 * The feature id for the '<em><b>Net Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MARKING__NET_ANNOTATIONS = NetannotationsPackage.OBJECT_ANNOTATION__NET_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MARKING__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MARKING__VALUE = NetannotationsPackage.TEXTUAL_ANNOTATION_FEATURE_COUNT + 0;
+	int MARKING__VALUE = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Marking</em>' class.
@@ -202,7 +220,7 @@ public interface AnnotationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MARKING_FEATURE_COUNT = NetannotationsPackage.TEXTUAL_ANNOTATION_FEATURE_COUNT + 1;
+	int MARKING_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
 
 
 	/**
