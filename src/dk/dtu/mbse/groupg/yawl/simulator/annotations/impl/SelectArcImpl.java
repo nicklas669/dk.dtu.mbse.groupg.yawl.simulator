@@ -97,6 +97,17 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void setSelected(boolean newSelected) {
+		// TODO: implement this method to set the 'Selected' attribute
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<EnabledTransition> getOutArcs() {
 		if (outArcs == null) {
 			outArcs = new EObjectResolvingEList<EnabledTransition>(EnabledTransition.class, this, AnnotationsPackage.SELECT_ARC__OUT_ARCS);
@@ -143,6 +154,9 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AnnotationsPackage.SELECT_ARC__SELECTED:
+				setSelected((Boolean)newValue);
+				return;
 			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
 				getOutArcs().clear();
 				getOutArcs().addAll((Collection<? extends EnabledTransition>)newValue);
@@ -163,6 +177,9 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AnnotationsPackage.SELECT_ARC__SELECTED:
+				setSelected(SELECTED_EDEFAULT);
+				return;
 			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
 				getOutArcs().clear();
 				return;

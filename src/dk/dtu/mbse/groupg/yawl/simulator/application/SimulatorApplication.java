@@ -75,6 +75,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				Arc arc = (Arc) obj;
 				if (arc.getType() != null) {
 					SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
+					
 					selectArc.setObject(arc);
 					netannotation.getObjectAnnotations().add(selectArc);
 				}
@@ -83,7 +84,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 
 		/*
 		 * and for the the new Annotaions defined in 2., you also need to set
-		 * the other features and references.
+		 * the other     vvvvvfeatures and references.
 		 */
 
 		// Then, add it to the netannotation by calling

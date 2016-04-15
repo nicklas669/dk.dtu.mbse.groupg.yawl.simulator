@@ -35,11 +35,22 @@ public interface SelectArc extends ObjectAnnotation {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Selected</em>' attribute.
+	 * @see #setSelected(boolean)
 	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getSelectArc_Selected()
-	 * @model default="false" changeable="false" volatile="true"
+	 * @model default="false" volatile="true"
 	 * @generated
 	 */
 	boolean isSelected();
+
+	/**
+	 * Sets the value of the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#isSelected <em>Selected</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Selected</em>' attribute.
+	 * @see #isSelected()
+	 * @generated
+	 */
+	void setSelected(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Out Arcs</b></em>' reference list.
