@@ -13,7 +13,10 @@ import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.Place;
+import yawlnet.yawltypes.Transistion;
 import yawlnet.yawltypes.Transition;
+import yawlnet.yawltypes.TransitionType;
+import yawlnet.yawltypes.impl.TransitionTypeImpl;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
 
@@ -58,9 +61,9 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		PetriNet pn = this.getPetrinet();
 
 		Iterator it = pn.eAllContents();
-
-		// for each object annotation, you must set the underlying Petri net
-		// object that it annotates;
+		
+		//In a given marking, 
+		//each place that has at least one token should receive a Marking annotation.
 		while (it.hasNext()) {
 			Object obj = it.next();
 			if (obj instanceof Place) {
@@ -75,10 +78,23 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				Arc arc = (Arc) obj;
 				if (arc.getType() != null) {
 					SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
-					
 					selectArc.setObject(arc);
+					selectArc.setSelected(true);
 					netannotation.getObjectAnnotations().add(selectArc);
 				}
+			} else if (obj instanceof Transition) {
+				/*	Each enabled transition should receive
+				 *  a EnabledTransition annotation.
+				 *  If this transition is an XOR-join,
+				 *  all the incoming arcs from a place with at least one token
+				 *  should receive a SelectArc annotation with the target
+				 *  set to the EnabledTransition annotation; 
+				 *  and exactly one SelectArc should have 
+				 *  the selected attribute set to true. 
+				 */
+				Transition trans = (Transition) obj;
+				
+
 			}
 		}
 
