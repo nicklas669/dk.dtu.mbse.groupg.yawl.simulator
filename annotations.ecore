@@ -7,8 +7,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetTransition" eType="#//SelectArc"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectArc" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        volatile="true" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
         eType="#//EnabledTransition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inArcs" upperBound="-1"

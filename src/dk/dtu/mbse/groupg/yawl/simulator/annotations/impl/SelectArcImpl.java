@@ -8,10 +8,12 @@ import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
@@ -41,6 +43,16 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	 * @ordered
 	 */
 	protected static final boolean SELECTED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSelected() <em>Selected</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSelected()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean selected = SELECTED_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOutArcs() <em>Out Arcs</em>}' reference list.
@@ -84,7 +96,7 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean isSelected() {
 		// TODO: implement this method to return the 'Selected' attribute
@@ -98,9 +110,10 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	 * @generated
 	 */
 	public void setSelected(boolean newSelected) {
-		// TODO: implement this method to set the 'Selected' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		boolean oldSelected = selected;
+		selected = newSelected;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnnotationsPackage.SELECT_ARC__SELECTED, oldSelected, selected));
 	}
 
 	/**
@@ -199,13 +212,29 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case AnnotationsPackage.SELECT_ARC__SELECTED:
-				return isSelected() != SELECTED_EDEFAULT;
+				return selected != SELECTED_EDEFAULT;
 			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
 				return outArcs != null && !outArcs.isEmpty();
 			case AnnotationsPackage.SELECT_ARC__IN_ARCS:
 				return inArcs != null && !inArcs.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (selected: ");
+		result.append(selected);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SelectArcImpl

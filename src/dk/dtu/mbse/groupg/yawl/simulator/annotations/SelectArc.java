@@ -27,7 +27,6 @@ import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 public interface SelectArc extends ObjectAnnotation {
 	/**
 	 * Returns the value of the '<em><b>Selected</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Selected</em>' attribute isn't clear,
@@ -37,7 +36,7 @@ public interface SelectArc extends ObjectAnnotation {
 	 * @return the value of the '<em>Selected</em>' attribute.
 	 * @see #setSelected(boolean)
 	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getSelectArc_Selected()
-	 * @model default="false" volatile="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	boolean isSelected();

@@ -92,6 +92,13 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				 *  and exactly one SelectArc should have 
 				 *  the selected attribute set to true. 
 				 */
+				
+				/*
+				 * If transition can be fired - then annotate it. And if 
+				 * you have a situation in which you can select between arcs, 
+				 * then you could make both arcs grey, and select between the two. Or just 
+				 * one red by default with switching possible
+				 */
 				Transition trans = (Transition) obj;
 				
 
