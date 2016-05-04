@@ -4,6 +4,7 @@ package dk.dtu.mbse.groupg.yawl.simulator.annotations;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -318,6 +319,63 @@ public interface AnnotationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.TransitionActivationAnnotationImpl <em>Transition Activation Annotation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.TransitionActivationAnnotationImpl
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getTransitionActivationAnnotation()
+	 * @generated
+	 */
+	int TRANSITION_ACTIVATION_ANNOTATION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Net Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_ACTIVATION_ANNOTATION__NET_ANNOTATIONS = NetannotationsPackage.OBJECT_ANNOTATION__NET_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_ACTIVATION_ANNOTATION__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
+
+	/**
+	 * The feature id for the '<em><b>Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_ACTIVATION_ANNOTATION__MODE = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Transition Activation Annotation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_ACTIVATION_ANNOTATION_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode <em>Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getMode()
+	 * @generated
+	 */
+	int MODE = 6;
+
+
+	/**
 	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition <em>Enabled Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -456,6 +514,37 @@ public interface AnnotationsPackage extends EPackage {
 	EAttribute getPlaceMarkingAnnotation_Text();
 
 	/**
+	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation <em>Transition Activation Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transition Activation Annotation</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation
+	 * @generated
+	 */
+	EClass getTransitionActivationAnnotation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation#getMode <em>Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mode</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation#getMode()
+	 * @see #getTransitionActivationAnnotation()
+	 * @generated
+	 */
+	EAttribute getTransitionActivationAnnotation_Mode();
+
+	/**
+	 * Returns the meta object for enum '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode <em>Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Mode</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode
+	 * @generated
+	 */
+	EEnum getMode();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -590,6 +679,34 @@ public interface AnnotationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLACE_MARKING_ANNOTATION__TEXT = eINSTANCE.getPlaceMarkingAnnotation_Text();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.TransitionActivationAnnotationImpl <em>Transition Activation Annotation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.TransitionActivationAnnotationImpl
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getTransitionActivationAnnotation()
+		 * @generated
+		 */
+		EClass TRANSITION_ACTIVATION_ANNOTATION = eINSTANCE.getTransitionActivationAnnotation();
+
+		/**
+		 * The meta object literal for the '<em><b>Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION_ACTIVATION_ANNOTATION__MODE = eINSTANCE.getTransitionActivationAnnotation_Mode();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode <em>Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getMode()
+		 * @generated
+		 */
+		EEnum MODE = eINSTANCE.getMode();
 
 	}
 

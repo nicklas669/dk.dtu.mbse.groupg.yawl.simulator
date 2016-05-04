@@ -8,6 +8,10 @@
   <foreignModel>annotations.ecore</foreignModel>
   <genPackages prefix="Annotations" basePackage="dk.dtu.mbse.groupg.yawl.simulator"
       disposableProviderFactory="true" ecorePackage="annotations.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="annotations.ecore#//Mode">
+      <genEnumLiterals ecoreEnumLiteral="annotations.ecore#//Mode/enabled"/>
+      <genEnumLiterals ecoreEnumLiteral="annotations.ecore#//Mode/fired"/>
+    </genEnums>
     <genClasses ecoreClass="annotations.ecore#//EnabledTransition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/sourceTransition"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/targetTransition"/>
@@ -25,6 +29,9 @@
     </genClasses>
     <genClasses ecoreClass="annotations.ecore#//PlaceMarkingAnnotation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//PlaceMarkingAnnotation/text"/>
+    </genClasses>
+    <genClasses ecoreClass="annotations.ecore#//TransitionActivationAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//TransitionActivationAnnotation/mode"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

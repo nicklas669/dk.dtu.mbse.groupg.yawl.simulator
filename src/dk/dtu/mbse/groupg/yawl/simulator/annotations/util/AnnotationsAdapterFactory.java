@@ -92,6 +92,10 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 				return createPlaceMarkingAnnotationAdapter();
 			}
 			@Override
+			public Adapter caseTransitionActivationAnnotation(TransitionActivationAnnotation object) {
+				return createTransitionActivationAnnotationAdapter();
+			}
+			@Override
 			public Adapter caseAnnotation(Annotation object) {
 				return createAnnotationAdapter();
 			}
@@ -190,6 +194,20 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPlaceMarkingAnnotationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation <em>Transition Activation Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation
+	 * @generated
+	 */
+	public Adapter createTransitionActivationAnnotationAdapter() {
 		return null;
 	}
 

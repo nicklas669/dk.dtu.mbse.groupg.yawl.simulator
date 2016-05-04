@@ -24,4 +24,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="PlaceMarkingAnnotation" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation ../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//TextualAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Mode">
+    <eLiterals name="enabled"/>
+    <eLiterals name="fired" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionActivationAnnotation" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="#//Mode"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -12,11 +12,15 @@ import org.pnml.tools.epnk.applications.ui.IActionHandler;
 import org.pnml.tools.epnk.helpers.FlatAccess;
 import org.pnml.tools.epnk.pnmlcoremodel.Arc;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
-import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation;
 import yawlnet.yawltypes.Place;
+import yawlnet.yawltypes.Transition;
 
 
 public class FireTransitionHandler implements IActionHandler {
@@ -39,7 +43,7 @@ public class FireTransitionHandler implements IActionHandler {
 			Object object = annotation.getObject();
 			if (object instanceof Transition && annotation instanceof EnabledTransition) {
 				Transition transition = (Transition) object;
-				EnabledTransition transitionAnnotation = ((EnabledTransition) annotation);
+				TransitionActivationAnnotation transitionAnnotation = ((TransitionActivationAnnotation) annotation);
 				Map<Place,Integer> marking1 = application.computeMarking();
 				if (application.enabled(flatNet, marking1, transition)) {
 					Map<Place,Integer> marking2 = application.fireTransition(flatNet, marking1, transition);
@@ -48,7 +52,7 @@ public class FireTransitionHandler implements IActionHandler {
 					List<ObjectAnnotation> clearPlaceAnnotations = new ArrayList<ObjectAnnotation>();
 					for (ObjectAnnotation objectAnnotation: current.getObjectAnnotations()) {
 						if (objectAnnotation != transitionAnnotation && objectAnnotation instanceof EnabledTransition ) {
-							((EnabledTransition) objectAnnotation).setMode(Mode.ENABLED);
+							((TransitionActivationAnnotation) objectAnnotation).setMode(Mode.ENABLED);
 						} else if (objectAnnotation instanceof EnabledTransition) {
 							clearPlaceAnnotations.add(objectAnnotation);
 						}
@@ -60,7 +64,7 @@ public class FireTransitionHandler implements IActionHandler {
 						if (object2 instanceof PlaceNode) {
 							PlaceNode target = flatNet.resolve((PlaceNode) object2);
 							if (target != null) {
-								PlaceSelectionAnnotation placeAnnotation = PtnetsimulatorFactory.eINSTANCE.createPlaceSelectionAnnotation();
+								PlaceSelectionAnnotation placeAnnotation = AnnotationsFactory.eINSTANCE.createPlaceSelectionAnnotation();
 								placeAnnotation.setObject(target);
 								placeAnnotation.setSelected(true);
 								current.getObjectAnnotations().add(placeAnnotation);

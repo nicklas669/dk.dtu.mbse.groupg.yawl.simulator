@@ -67,6 +67,15 @@ public interface AnnotationsFactory extends EFactory {
 	PlaceMarkingAnnotation createPlaceMarkingAnnotation();
 
 	/**
+	 * Returns a new object of class '<em>Transition Activation Annotation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transition Activation Annotation</em>'.
+	 * @generated
+	 */
+	TransitionActivationAnnotation createTransitionActivationAnnotation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
