@@ -1,15 +1,19 @@
 package dk.dtu.mbse.groupg.yawl.simulator.application;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
+import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ApplicationWithUIManager;
 import org.pnml.tools.epnk.applications.ui.ApplicationUIManager;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.Place;
@@ -92,6 +96,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				 *  and exactly one SelectArc should have 
 				 *  the selected attribute set to true. 
 				 */
+				Transition transition = (Transition) obj;
 				
 				/*
 				 * If transition can be fired - then annotate it. And if 
@@ -99,7 +104,6 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				 * then you could make both arcs grey, and select between the two. Or just 
 				 * one red by default with switching possible
 				 */
-				Transition trans = (Transition) obj;
 				
 
 			}
@@ -123,5 +127,23 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		this.getNetAnnotations().setCurrent(netannotation);
 
 	}
-
+/**
+ * From package org.pnml.tools.epnk.tutorial.application.ptnetsimulator;
+	public class PTNetSimulatorApplication extends ApplicationWithUIManager {
+ * @return
+ */
+	public Map<Place, Integer> computeMarking() {
+		Map<Place,Integer> marking = new HashMap<Place,Integer>();
+		for (ObjectAnnotation annotation: this.getNetAnnotations().getCurrent().getObjectAnnotations()) {
+			if (annotation instanceof PlaceMarkingAnnotation) {
+				PlaceMarkingAnnotation markingAnnotation = (PlaceMarkingAnnotation) annotation;
+				Object object = markingAnnotation.getObject();
+				if (object instanceof Place && markingAnnotation.getText() > 0) {
+					Place ptPlace = (Place) object;
+					marking.put(ptPlace, markingAnnotation.getText());
+				}
+			}
+		}
+		return marking;
+	}
 }

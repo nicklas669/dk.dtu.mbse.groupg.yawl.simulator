@@ -49,6 +49,24 @@ public interface AnnotationsFactory extends EFactory {
 	Marking createMarking();
 
 	/**
+	 * Returns a new object of class '<em>Place Selection Annotation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Place Selection Annotation</em>'.
+	 * @generated
+	 */
+	PlaceSelectionAnnotation createPlaceSelectionAnnotation();
+
+	/**
+	 * Returns a new object of class '<em>Place Marking Annotation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Place Marking Annotation</em>'.
+	 * @generated
+	 */
+	PlaceMarkingAnnotation createPlaceMarkingAnnotation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

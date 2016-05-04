@@ -59,6 +59,8 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 			case AnnotationsPackage.ENABLED_TRANSITION: return createEnabledTransition();
 			case AnnotationsPackage.SELECT_ARC: return createSelectArc();
 			case AnnotationsPackage.MARKING: return createMarking();
+			case AnnotationsPackage.PLACE_SELECTION_ANNOTATION: return createPlaceSelectionAnnotation();
+			case AnnotationsPackage.PLACE_MARKING_ANNOTATION: return createPlaceMarkingAnnotation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +94,26 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	public Marking createMarking() {
 		MarkingImpl marking = new MarkingImpl();
 		return marking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlaceSelectionAnnotation createPlaceSelectionAnnotation() {
+		PlaceSelectionAnnotationImpl placeSelectionAnnotation = new PlaceSelectionAnnotationImpl();
+		return placeSelectionAnnotation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlaceMarkingAnnotation createPlaceMarkingAnnotation() {
+		PlaceMarkingAnnotationImpl placeMarkingAnnotation = new PlaceMarkingAnnotationImpl();
+		return placeMarkingAnnotation;
 	}
 
 	/**

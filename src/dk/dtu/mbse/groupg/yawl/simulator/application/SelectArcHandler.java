@@ -26,6 +26,9 @@ public class SelectArcHandler implements IActionHandler {
 			SelectArc arcAnnotation = (SelectArc) annotation;
 			arcAnnotation.setSelected(!arcAnnotation.isSelected());
 			application.update();
+			//Need to make sure that the selection of all arcs of a 
+			//transition is consistent (i.e. exactly one arc selected
+			// for XOR-joins or -split and at least one arc selected for OR-splits
 			return true; 
 		}
 		return false; 

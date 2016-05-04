@@ -224,6 +224,100 @@ public interface AnnotationsPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceSelectionAnnotationImpl <em>Place Selection Annotation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceSelectionAnnotationImpl
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getPlaceSelectionAnnotation()
+	 * @generated
+	 */
+	int PLACE_SELECTION_ANNOTATION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Net Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_SELECTION_ANNOTATION__NET_ANNOTATIONS = NetannotationsPackage.OBJECT_ANNOTATION__NET_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_SELECTION_ANNOTATION__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
+
+	/**
+	 * The feature id for the '<em><b>Selected</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_SELECTION_ANNOTATION__SELECTED = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Place Selection Annotation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_SELECTION_ANNOTATION_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
+
+
+	/**
+	 * The meta object id for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceMarkingAnnotationImpl <em>Place Marking Annotation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceMarkingAnnotationImpl
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getPlaceMarkingAnnotation()
+	 * @generated
+	 */
+	int PLACE_MARKING_ANNOTATION = 4;
+
+	/**
+	 * The feature id for the '<em><b>Net Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_MARKING_ANNOTATION__NET_ANNOTATIONS = NetannotationsPackage.OBJECT_ANNOTATION__NET_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_MARKING_ANNOTATION__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_MARKING_ANNOTATION__TEXT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Place Marking Annotation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_MARKING_ANNOTATION_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition <em>Enabled Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +412,48 @@ public interface AnnotationsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMarking_Value();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation <em>Place Selection Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Place Selection Annotation</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation
+	 * @generated
+	 */
+	EClass getPlaceSelectionAnnotation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation#isSelected <em>Selected</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selected</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation#isSelected()
+	 * @see #getPlaceSelectionAnnotation()
+	 * @generated
+	 */
+	EAttribute getPlaceSelectionAnnotation_Selected();
+
+	/**
+	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation <em>Place Marking Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Place Marking Annotation</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation
+	 * @generated
+	 */
+	EClass getPlaceMarkingAnnotation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation#getText()
+	 * @see #getPlaceMarkingAnnotation()
+	 * @generated
+	 */
+	EAttribute getPlaceMarkingAnnotation_Text();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -418,6 +554,42 @@ public interface AnnotationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MARKING__VALUE = eINSTANCE.getMarking_Value();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceSelectionAnnotationImpl <em>Place Selection Annotation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceSelectionAnnotationImpl
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getPlaceSelectionAnnotation()
+		 * @generated
+		 */
+		EClass PLACE_SELECTION_ANNOTATION = eINSTANCE.getPlaceSelectionAnnotation();
+
+		/**
+		 * The meta object literal for the '<em><b>Selected</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE_SELECTION_ANNOTATION__SELECTED = eINSTANCE.getPlaceSelectionAnnotation_Selected();
+
+		/**
+		 * The meta object literal for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceMarkingAnnotationImpl <em>Place Marking Annotation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.PlaceMarkingAnnotationImpl
+		 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.AnnotationsPackageImpl#getPlaceMarkingAnnotation()
+		 * @generated
+		 */
+		EClass PLACE_MARKING_ANNOTATION = eINSTANCE.getPlaceMarkingAnnotation();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE_MARKING_ANNOTATION__TEXT = eINSTANCE.getPlaceMarkingAnnotation_Text();
 
 	}
 

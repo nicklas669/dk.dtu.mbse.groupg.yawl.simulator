@@ -84,6 +84,14 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 				return createMarkingAdapter();
 			}
 			@Override
+			public Adapter casePlaceSelectionAnnotation(PlaceSelectionAnnotation object) {
+				return createPlaceSelectionAnnotationAdapter();
+			}
+			@Override
+			public Adapter casePlaceMarkingAnnotation(PlaceMarkingAnnotation object) {
+				return createPlaceMarkingAnnotationAdapter();
+			}
+			@Override
 			public Adapter caseAnnotation(Annotation object) {
 				return createAnnotationAdapter();
 			}
@@ -154,6 +162,34 @@ public class AnnotationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMarkingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation <em>Place Selection Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation
+	 * @generated
+	 */
+	public Adapter createPlaceSelectionAnnotationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation <em>Place Marking Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation
+	 * @generated
+	 */
+	public Adapter createPlaceMarkingAnnotationAdapter() {
 		return null;
 	}
 

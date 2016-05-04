@@ -20,5 +20,11 @@
     <genClasses ecoreClass="annotations.ecore#//Marking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//Marking/value"/>
     </genClasses>
+    <genClasses ecoreClass="annotations.ecore#//PlaceSelectionAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//PlaceSelectionAnnotation/selected"/>
+    </genClasses>
+    <genClasses ecoreClass="annotations.ecore#//PlaceMarkingAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//PlaceMarkingAnnotation/text"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
