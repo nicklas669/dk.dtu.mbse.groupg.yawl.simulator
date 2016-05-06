@@ -41,6 +41,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		super(petrinet);
 		ApplicationUIManager manager = this.getPresentationManager();
 		manager.addPresentationHandler(new PresentationHandler());
+		manager.addActionHandler(new FireTransitionHandler(this));
+		manager.addActionHandler(new SelectArcHandler(this));
 	}
 
 	/*

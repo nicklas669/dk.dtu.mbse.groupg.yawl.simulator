@@ -22,6 +22,13 @@ public class SelectArcHandler implements IActionHandler {
 
 	@Override
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
+		/*
+		 * For SelectArc annotations, it should select or unselect the underlying
+		 * arc; but you need to make sure that the selection of all arcs of a
+		 * transition is consistent (i.e. exactly one arc selected for XOR-joins or
+		 * -split and at least one arc selected for OR-splits
+		 */
+		System.err.println("mousePressed from SelectArcHandler!");
 		if (annotation instanceof SelectArc) {
 			SelectArc arcAnnotation = (SelectArc) annotation;
 			arcAnnotation.setSelected(!arcAnnotation.isSelected());

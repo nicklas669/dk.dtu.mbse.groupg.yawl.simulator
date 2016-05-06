@@ -35,6 +35,7 @@ public class FireTransitionHandler implements IActionHandler {
 
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
+		System.err.println("mouseDoubleClicked from FireTransitionHandler!");
 		NetAnnotations netAnnotations = application.getNetAnnotations();
 		NetAnnotation current = netAnnotations.getCurrent();
 		
@@ -85,20 +86,7 @@ public class FireTransitionHandler implements IActionHandler {
 
 	@Override
 	public boolean mousePressed(MouseEvent arg0, ObjectAnnotation annotation) {
-		/*
-		 * For SelectArc annotations, it should select or unselect the underlying
-		 * arc; but you need to make sure that the selection of all arcs of a
-		 * transition is consistent (i.e. exactly one arc selected for XOR-joins or
-		 * -split and at least one arc selected for OR-splits
-		 */
-		if (annotation instanceof SelectArc) {
-			SelectArc arcAnnotation = (SelectArc) annotation;
-			//arcAnnotation.getObject()
-			//arcAnnotation.setSelected(!arcAnnotation.isSelected());
-			application.update();
-			return true; 
-		}
-		return false; 
+		return false;
 	}
 
 	@Override
