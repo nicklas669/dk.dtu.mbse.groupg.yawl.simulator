@@ -91,12 +91,13 @@ public class PlaceMarkingAnnotationImpl extends ObjectAnnotationImpl implements 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public EAttribute getAnnotationAttribute() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		return AnnotationsPackage.eINSTANCE.getMarking_Value();
 	}
 
 	/**
