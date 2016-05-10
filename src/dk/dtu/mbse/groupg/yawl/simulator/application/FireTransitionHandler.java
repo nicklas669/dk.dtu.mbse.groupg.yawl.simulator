@@ -1,3 +1,8 @@
+/**
+ * Handler for firing a transition.
+ * @author Nicklas Hansen (s144858)
+ * Large parts copied from Ekkart Kindler's example in the epnk tutorials pt-net-simulator!
+ */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
 
 import java.util.ArrayList;
@@ -30,7 +35,6 @@ public class FireTransitionHandler implements IActionHandler {
 		this.application = application;
 	}
 	
-
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
 		System.err.println("mouseDoubleClicked from FireTransitionHandler!");

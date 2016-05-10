@@ -96,12 +96,10 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @author Nicklas Hansen (s144858)
 	 * @generated NOT
 	 */
 	public boolean isSelected() {
-		// TODO: implement this method to return the 'Selected' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		//throw new UnsupportedOperationException();
 		return selected;
 	}
 

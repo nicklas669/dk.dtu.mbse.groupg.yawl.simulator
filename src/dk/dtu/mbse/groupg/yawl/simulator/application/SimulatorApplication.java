@@ -1,10 +1,13 @@
+/**
+ * Inspiration from org.pnml.tools.epnk.tutorial.application.ptnetsimulator/PTNetSimulatorApplication.java by Ekkart Kindler
+ * @author Nicklas Hansen (s144858)
+ * @author Emil Hvid
+ */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
@@ -14,11 +17,8 @@ import org.pnml.tools.epnk.helpers.FlatAccess;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
-import org.pnml.tools.epnk.pntypes.ptnet.PTArcAnnotation;
 
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
@@ -26,19 +26,14 @@ import dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotat
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.PlaceTypes;
-import yawlnet.yawltypes.Transistion;
 import yawlnet.yawltypes.Transition;
-import yawlnet.yawltypes.TransitionType;
-import yawlnet.yawltypes.TransitionTypes;
 import yawlnet.yawltypes.YAWLNetArcAnnotation;
-import yawlnet.yawltypes.YawltypesFactory;
-import yawlnet.yawltypes.impl.TransitionTypeImpl;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
 
 	/**
 	 * Create a constructor for this class with Petri net as its parameter
-	 * 
+	 * @author Nicklas Hansen (s144858)
 	 * @param petrinet
 	 */
 	public SimulatorApplication(PetriNet petrinet) {
@@ -53,6 +48,9 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 	 * One method that you must implement is initializeContents(), which creates
 	 * the initial annotations of the net on which the application is started.
 	 * In this method, this net is available by the method getPetriNet().
+	 */
+	/**
+	 * @author Nicklas Hansen (s144858)
 	 */
 	public void initializeContents() {
 		/*
@@ -80,37 +78,31 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 
 		Iterator it = pn.eAllContents();
 
-		// In a given marking,
-		// each place that has at least one token should receive a Marking
-		// annotation.
+		// In a given marking, each place that has at least one token should receive a Marking annotation.
 		while (it.hasNext()) {
 			Object obj = it.next();
 			if (obj instanceof Place) {
 				Place place = (Place) obj;
 				if (place.getType() != null) {
 					if (place.getType().getText().getValue() == PlaceTypes.START_VALUE) {
-						// Initially only start place should have a token?
+						// Initially only start place should have an annotation
 						PlaceMarkingAnnotation placeMarking = AnnotationsFactory.eINSTANCE.createPlaceMarkingAnnotation();
 						placeMarking.setObject(place);
 						placeMarking.setText(1);
 						netannotation.getObjectAnnotations().add(placeMarking);
 						
 						// Activate start place's nearest transitions...
+						// First get all the start place's outgoing arcs and iterate over them
 						Iterator<org.pnml.tools.epnk.pnmlcoremodel.Arc> arcIterator = place.getOut().iterator();
 						while (arcIterator.hasNext()) {
+							// Create an annotation for each transition connected to start place
 							Arc arc = (Arc) arcIterator.next();
-							// Annotate the in-going Arc 
-//							if (arc.getType() != null) {
-//								SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
-//								selectArc.setObject(arc);
-//								selectArc.setSelected(true);
-//								netannotation.getObjectAnnotations().add(selectArc);
-//							}
 							Transition trans = (Transition) arc.getTarget();
 							TransitionActivationAnnotation enabledTrans = AnnotationsFactory.eINSTANCE
 									.createTransitionActivationAnnotation();
 							enabledTrans.setObject(trans);
 							netannotation.getObjectAnnotations().add(enabledTrans);
+							
 							
 							// Create annotations for each outgoing Arc from transition
 							Iterator<org.pnml.tools.epnk.pnmlcoremodel.Arc> arcIterator2 = trans.getOut().iterator();
@@ -118,8 +110,10 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 								Arc arc2 = (Arc) arcIterator2.next();
 								// Annotate the out-going Arc 
 								// if (arc2.getType() != null) {
+								// Might want to check here if arc is of type Reset - resetarcs shouldnt be selectable?
 									SelectArc selectArc2 = AnnotationsFactory.eINSTANCE.createSelectArc();
 									selectArc2.setObject(arc2);
+									// Initially all these arcs are not selected
 									selectArc2.setSelected(false);
 									netannotation.getObjectAnnotations().add(selectArc2);
 								// }

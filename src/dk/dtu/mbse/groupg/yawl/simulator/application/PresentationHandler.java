@@ -1,3 +1,8 @@
+/**
+ * Handler responsible for handling the looks of annotations
+ * @author Nicklas Hansen (s144858)
+ *
+ */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
 
 import org.eclipse.draw2d.ColorConstants;
@@ -15,6 +20,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 import yawlnet.yawltypes.Arc;
 
+
 public class PresentationHandler implements IPresentationHandler {
 
 	/*
@@ -22,6 +28,10 @@ public class PresentationHandler implements IPresentationHandler {
 	 * least for SelectArc) how they look; for SelectArc annotations, you could
 	 * create a PolylineOverlay for the arc and set its colour to grey if the
 	 * selected attribute is false (it will be red by default).
+	 */
+	
+	/**
+	 * @author Nicklas Hansen (s144858)
 	 */
 	@Override
 	public IFigure handle(ObjectAnnotation annotation, AbstractGraphicalEditPart graphicalEditPart) {
@@ -33,12 +43,9 @@ public class PresentationHandler implements IPresentationHandler {
 				java.lang.Object modelObject = editPart.resolveSemanticElement();
 				if (modelObject instanceof Arc) {
 					PolylineOverlay overlay = new PolylineOverlay((ConnectionNodeEditPart) graphicalEditPart);
-					System.err.println("PresentationHandler: arcAnnotation.selected = "+selectArcAnnotation.isSelected());
 					if (!selectArcAnnotation.isSelected()) {
 						overlay.setForegroundColor(ColorConstants.gray);
 						overlay.setBackgroundColor(ColorConstants.gray);
-//						overlay.getUpdateManager().addDirtyRegion(overlay, overlay.getBounds());
-						System.err.println("Sat color til grå!");
 					}
 					return overlay;
 				}
