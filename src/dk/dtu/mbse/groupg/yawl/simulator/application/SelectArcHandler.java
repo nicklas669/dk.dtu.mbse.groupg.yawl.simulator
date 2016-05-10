@@ -31,7 +31,9 @@ public class SelectArcHandler implements IActionHandler {
 		System.err.println("mousePressed from SelectArcHandler!");
 		if (annotation instanceof SelectArc) {
 			SelectArc arcAnnotation = (SelectArc) annotation;
+			System.err.println("Trykket arc selected før: "+arcAnnotation.isSelected());
 			arcAnnotation.setSelected(!arcAnnotation.isSelected());
+			System.err.println("Trykket arc selected efter: "+arcAnnotation.isSelected());
 			application.update();
 			//Need to make sure that the selection of all arcs of a 
 			//transition is consistent (i.e. exactly one arc selected

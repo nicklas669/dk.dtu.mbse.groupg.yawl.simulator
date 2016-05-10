@@ -18,6 +18,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.pnml.tools.epnk;bundle-version="1.0.1";visibility:=reexport,
  org.pnml.tools.epnk.applications;bundle-version="0.2.1",
  org.pnml.tools.epnk.annotations;bundle-version="0.2.0";visibility:=reexport,
- dk.dtu.mbse.groupd.yawl;bundle-version="0.1.0"
+ dk.dtu.mbse.groupd.yawl;bundle-version="0.1.0",
+ org.pnml.tools.epnk.diagram
 Bundle-ActivationPolicy: lazy
 Import-Package: org.pnml.tools.epnk.pntypes.ptnet

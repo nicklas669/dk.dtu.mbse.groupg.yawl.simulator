@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
@@ -93,37 +94,77 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 						placeMarking.setObject(place);
 						placeMarking.setText(1);
 						netannotation.getObjectAnnotations().add(placeMarking);
+						
+						// Activate start place's nearest transitions...
+						Iterator<org.pnml.tools.epnk.pnmlcoremodel.Arc> arcIterator = place.getOut().iterator();
+						while (arcIterator.hasNext()) {
+							Arc arc = (Arc) arcIterator.next();
+							// Annotate the in-going Arc 
+//							if (arc.getType() != null) {
+//								SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
+//								selectArc.setObject(arc);
+//								selectArc.setSelected(true);
+//								netannotation.getObjectAnnotations().add(selectArc);
+//							}
+							Transition trans = (Transition) arc.getTarget();
+							TransitionActivationAnnotation enabledTrans = AnnotationsFactory.eINSTANCE
+									.createTransitionActivationAnnotation();
+							enabledTrans.setObject(trans);
+							netannotation.getObjectAnnotations().add(enabledTrans);
+							
+							// Create annotations for each outgoing Arc from transition
+							Iterator<org.pnml.tools.epnk.pnmlcoremodel.Arc> arcIterator2 = trans.getOut().iterator();
+							while (arcIterator2.hasNext()) {
+								Arc arc2 = (Arc) arcIterator2.next();
+								// Annotate the out-going Arc 
+								// if (arc2.getType() != null) {
+									SelectArc selectArc2 = AnnotationsFactory.eINSTANCE.createSelectArc();
+									selectArc2.setObject(arc2);
+									selectArc2.setSelected(false);
+									netannotation.getObjectAnnotations().add(selectArc2);
+								// }
+							}
+						}
 					}
 				}
 			} 
-			// Arc logic should be handled under Transition?
-			else if (obj instanceof Arc) {
-				Arc arc = (Arc) obj;
-				if (arc.getType() != null) {
-					SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
-					selectArc.setObject(arc);
-					selectArc.setSelected(true);
-					netannotation.getObjectAnnotations().add(selectArc);
-				}
-			} 
-			else if (obj instanceof Transition) {
-				/*
-				 * If this transition is an XOR-join, all the incoming arcs from
-				 * a place with at least one token should receive a SelectArc
-				 * annotation with the target set to the EnabledTransition
-				 * annotation; and exactly one SelectArc should have the
-				 * selected attribute set to true.
-				 */
-				Transition transition = (Transition) obj;
-				TransitionActivationAnnotation enabledTrans = AnnotationsFactory.eINSTANCE
-						.createTransitionActivationAnnotation();
-				enabledTrans.setObject(transition);
-				
-				// Check for split/join her ...
-//				if (transition.getJoin().getText().getValue() == TransitionTypes.XOR_VALUE) {
+//			// Arc logic should be handled under Transition?
+//			else if (obj instanceof Arc) {
+//				Arc arc = (Arc) obj;
+//				if (arc.getType() != null) {
+//					SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
+//					selectArc.setObject(arc);
+//					selectArc.setSelected(true);
+//					netannotation.getObjectAnnotations().add(selectArc);
 //				}
-				
-				netannotation.getObjectAnnotations().add(enabledTrans);
+//			} 
+//			else if (obj instanceof Transition) {
+//				/*
+//				 * If this transition is an XOR-join, all the incoming arcs from
+//				 * a place with at least one token should receive a SelectArc
+//				 * annotation with the target set to the EnabledTransition
+//				 * annotation; and exactly one SelectArc should have the
+//				 * selected attribute set to true.
+//				 */
+//				Transition transition = (Transition) obj;
+//				TransitionActivationAnnotation enabledTrans = AnnotationsFactory.eINSTANCE
+//						.createTransitionActivationAnnotation();
+//				enabledTrans.setObject(transition);
+//				
+//				Iterator<org.pnml.tools.epnk.pnmlcoremodel.Arc> arcIterator = transition.getOut().iterator();
+//				while (arcIterator.hasNext()) {
+//					Arc arc = (Arc) arcIterator.next();
+//					SelectArc selectArc = AnnotationsFactory.eINSTANCE.createSelectArc();
+//					selectArc.setObject(arc);
+//					selectArc.setSelected(true);
+//					netannotation.getObjectAnnotations().add(selectArc);
+//				}
+//				
+//				// Check for split/join her ...
+////				if (transition.getJoin().getText().getValue() == TransitionTypes.XOR_VALUE) {
+////				}
+//				
+//				netannotation.getObjectAnnotations().add(enabledTrans);
 
 				/*
 				 * Each enabled transition should receive a EnabledTransition
@@ -133,7 +174,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				 * the two. Or just one red by default with switching possible
 				 */
 
-			}
+//			}
 		}
 
 		/*

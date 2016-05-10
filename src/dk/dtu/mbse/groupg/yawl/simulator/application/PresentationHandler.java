@@ -9,6 +9,7 @@ import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ui.IPresentationHandler;
 import org.pnml.tools.epnk.applications.ui.figures.PolylineOverlay;
 import org.pnml.tools.epnk.applications.ui.figures.RectangleOverlay;
+import org.pnml.tools.epnk.diagram.edit.parts.ArcEditPart;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
@@ -26,15 +27,18 @@ public class PresentationHandler implements IPresentationHandler {
 	public IFigure handle(ObjectAnnotation annotation, AbstractGraphicalEditPart graphicalEditPart) {
 		if (annotation instanceof SelectArc) {
 			SelectArc selectArcAnnotation = (SelectArc) annotation;
-			if (graphicalEditPart instanceof GraphicalEditPart) {
-				GraphicalEditPart editPart = (GraphicalEditPart) graphicalEditPart;
+			if (graphicalEditPart instanceof ArcEditPart) {
+				ArcEditPart editPart = (ArcEditPart) graphicalEditPart;
 				// IFigure figure = graphicalEditPart.getFigure();
 				java.lang.Object modelObject = editPart.resolveSemanticElement();
 				if (modelObject instanceof Arc) {
 					PolylineOverlay overlay = new PolylineOverlay((ConnectionNodeEditPart) graphicalEditPart);
+					System.err.println("PresentationHandler: arcAnnotation.selected = "+selectArcAnnotation.isSelected());
 					if (!selectArcAnnotation.isSelected()) {
 						overlay.setForegroundColor(ColorConstants.gray);
 						overlay.setBackgroundColor(ColorConstants.gray);
+//						overlay.getUpdateManager().addDirtyRegion(overlay, overlay.getBounds());
+						System.err.println("Sat color til grå!");
 					}
 					return overlay;
 				}
