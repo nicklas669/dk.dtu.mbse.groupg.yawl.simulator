@@ -21,7 +21,6 @@ import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.Place;

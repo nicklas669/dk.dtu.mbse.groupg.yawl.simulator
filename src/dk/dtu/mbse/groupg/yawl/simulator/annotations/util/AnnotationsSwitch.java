@@ -95,31 +95,6 @@ public class AnnotationsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AnnotationsPackage.PLACE_SELECTION_ANNOTATION: {
-				PlaceSelectionAnnotation placeSelectionAnnotation = (PlaceSelectionAnnotation)theEObject;
-				T result = casePlaceSelectionAnnotation(placeSelectionAnnotation);
-				if (result == null) result = caseObjectAnnotation(placeSelectionAnnotation);
-				if (result == null) result = caseAnnotation(placeSelectionAnnotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnnotationsPackage.PLACE_MARKING_ANNOTATION: {
-				PlaceMarkingAnnotation placeMarkingAnnotation = (PlaceMarkingAnnotation)theEObject;
-				T result = casePlaceMarkingAnnotation(placeMarkingAnnotation);
-				if (result == null) result = caseObjectAnnotation(placeMarkingAnnotation);
-				if (result == null) result = caseTextualAnnotation(placeMarkingAnnotation);
-				if (result == null) result = caseAnnotation(placeMarkingAnnotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AnnotationsPackage.TRANSITION_ACTIVATION_ANNOTATION: {
-				TransitionActivationAnnotation transitionActivationAnnotation = (TransitionActivationAnnotation)theEObject;
-				T result = caseTransitionActivationAnnotation(transitionActivationAnnotation);
-				if (result == null) result = caseObjectAnnotation(transitionActivationAnnotation);
-				if (result == null) result = caseAnnotation(transitionActivationAnnotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -166,51 +141,6 @@ public class AnnotationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMarking(Marking object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Place Selection Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Place Selection Annotation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePlaceSelectionAnnotation(PlaceSelectionAnnotation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Place Marking Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Place Marking Annotation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePlaceMarkingAnnotation(PlaceMarkingAnnotation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Transition Activation Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Transition Activation Annotation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTransitionActivationAnnotation(TransitionActivationAnnotation object) {
 		return null;
 	}
 

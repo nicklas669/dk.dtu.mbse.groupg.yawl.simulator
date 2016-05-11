@@ -6,15 +6,9 @@ import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
-
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -49,34 +43,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 	 * @generated
 	 */
 	private EClass markingEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass placeSelectionAnnotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass placeMarkingAnnotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass transitionActivationAnnotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum modeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -228,69 +194,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPlaceSelectionAnnotation() {
-		return placeSelectionAnnotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlaceSelectionAnnotation_Selected() {
-		return (EAttribute)placeSelectionAnnotationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPlaceMarkingAnnotation() {
-		return placeMarkingAnnotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlaceMarkingAnnotation_Text() {
-		return (EAttribute)placeMarkingAnnotationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTransitionActivationAnnotation() {
-		return transitionActivationAnnotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransitionActivationAnnotation_Mode() {
-		return (EAttribute)transitionActivationAnnotationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getMode() {
-		return modeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public AnnotationsFactory getAnnotationsFactory() {
 		return (AnnotationsFactory)getEFactoryInstance();
 	}
@@ -325,18 +228,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 
 		markingEClass = createEClass(MARKING);
 		createEAttribute(markingEClass, MARKING__VALUE);
-
-		placeSelectionAnnotationEClass = createEClass(PLACE_SELECTION_ANNOTATION);
-		createEAttribute(placeSelectionAnnotationEClass, PLACE_SELECTION_ANNOTATION__SELECTED);
-
-		placeMarkingAnnotationEClass = createEClass(PLACE_MARKING_ANNOTATION);
-		createEAttribute(placeMarkingAnnotationEClass, PLACE_MARKING_ANNOTATION__TEXT);
-
-		transitionActivationAnnotationEClass = createEClass(TRANSITION_ACTIVATION_ANNOTATION);
-		createEAttribute(transitionActivationAnnotationEClass, TRANSITION_ACTIVATION_ANNOTATION__MODE);
-
-		// Create enums
-		modeEEnum = createEEnum(MODE);
 	}
 
 	/**
@@ -374,10 +265,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 		selectArcEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getTextualAnnotation());
-		placeSelectionAnnotationEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
-		placeMarkingAnnotationEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
-		placeMarkingAnnotationEClass.getESuperTypes().add(theNetannotationsPackage.getTextualAnnotation());
-		transitionActivationAnnotationEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(enabledTransitionEClass, EnabledTransition.class, "EnabledTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -391,20 +278,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 
 		initEClass(markingEClass, Marking.class, "Marking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMarking_Value(), ecorePackage.getEInt(), "value", "1", 0, 1, Marking.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(placeSelectionAnnotationEClass, PlaceSelectionAnnotation.class, "PlaceSelectionAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPlaceSelectionAnnotation_Selected(), ecorePackage.getEBoolean(), "selected", null, 0, 1, PlaceSelectionAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(placeMarkingAnnotationEClass, PlaceMarkingAnnotation.class, "PlaceMarkingAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPlaceMarkingAnnotation_Text(), ecorePackage.getEInt(), "text", null, 0, 1, PlaceMarkingAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(transitionActivationAnnotationEClass, TransitionActivationAnnotation.class, "TransitionActivationAnnotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransitionActivationAnnotation_Mode(), this.getMode(), "mode", null, 0, 1, TransitionActivationAnnotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(modeEEnum, Mode.class, "Mode");
-		addEEnumLiteral(modeEEnum, Mode.ENABLED);
-		addEEnumLiteral(modeEEnum, Mode.FIRED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -15,12 +15,7 @@ import org.pnml.tools.epnk.annotations.netannotations.NetAnnotations;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ui.IActionHandler;
 import org.pnml.tools.epnk.helpers.FlatAccess;
-import org.pnml.tools.epnk.pnmlcoremodel.Arc;
-import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.Transition;

@@ -10,7 +10,6 @@ import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ui.IActionHandler;
 
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation;
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.PlaceType;

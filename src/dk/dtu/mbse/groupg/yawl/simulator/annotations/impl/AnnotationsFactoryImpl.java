@@ -5,7 +5,6 @@ package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.*;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -60,41 +59,8 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 			case AnnotationsPackage.ENABLED_TRANSITION: return createEnabledTransition();
 			case AnnotationsPackage.SELECT_ARC: return createSelectArc();
 			case AnnotationsPackage.MARKING: return createMarking();
-			case AnnotationsPackage.PLACE_SELECTION_ANNOTATION: return createPlaceSelectionAnnotation();
-			case AnnotationsPackage.PLACE_MARKING_ANNOTATION: return createPlaceMarkingAnnotation();
-			case AnnotationsPackage.TRANSITION_ACTIVATION_ANNOTATION: return createTransitionActivationAnnotation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case AnnotationsPackage.MODE:
-				return createModeFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case AnnotationsPackage.MODE:
-				return convertModeToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -126,56 +92,6 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	public Marking createMarking() {
 		MarkingImpl marking = new MarkingImpl();
 		return marking;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PlaceSelectionAnnotation createPlaceSelectionAnnotation() {
-		PlaceSelectionAnnotationImpl placeSelectionAnnotation = new PlaceSelectionAnnotationImpl();
-		return placeSelectionAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PlaceMarkingAnnotation createPlaceMarkingAnnotation() {
-		PlaceMarkingAnnotationImpl placeMarkingAnnotation = new PlaceMarkingAnnotationImpl();
-		return placeMarkingAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TransitionActivationAnnotation createTransitionActivationAnnotation() {
-		TransitionActivationAnnotationImpl transitionActivationAnnotation = new TransitionActivationAnnotationImpl();
-		return transitionActivationAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Mode createModeFromString(EDataType eDataType, String initialValue) {
-		Mode result = Mode.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertModeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
