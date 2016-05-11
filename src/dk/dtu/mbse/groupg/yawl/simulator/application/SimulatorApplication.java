@@ -33,6 +33,8 @@ import yawlnet.yawltypes.YAWLNetArcAnnotation;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
 
+	NetAnnotation netannotation;
+
 	/**
 	 * Create a constructor for this class with Petri net as its parameter
 	 * 
@@ -61,7 +63,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		 * In order to add the object annotations to somewhere, create a new net
 		 * annotation first:
 		 */
-		NetAnnotation netannotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
+		netannotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
 		netannotation.setNet(getPetrinet());
 
 		/**
@@ -219,164 +221,56 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		 */
 		this.getNetAnnotations().getNetAnnotations().add(netannotation);
 		this.getNetAnnotations().setCurrent(netannotation);
-
 	}
 
-	/**
-	 * From package org.pnml.tools.epnk.tutorial.application.ptnetsimulator;
-	 * public class PTNetSimulatorApplication extends ApplicationWithUIManager {
-	 * 
-	 * @return
-	 */
-	boolean enabled(FlatAccess flatNet, Map<Place, Integer> marking, Transition transition) {
-		// TODO this does not work yet if there is more than one arc between the
-		// same
-		// place and the same transition!
-		for (Object arc : flatNet.getIn(transition)) {
-			if (arc instanceof Arc) {
-				Arc ptArc = (Arc) arc;
-				YAWLNetArcAnnotation arcAnnotation = ptArc.getInscription();
-				int available = 0;
-				Object source = ptArc.getSource();
-				if (source instanceof PlaceNode) {
-					source = flatNet.resolve((PlaceNode) source);
-					if (source instanceof Place) {
-						if (marking.containsKey(source)) {
-							available = marking.get(source);
-						}
-						int needed = 1;
-						if (arcAnnotation != null) {
-							needed = arcAnnotation.getText().getValue();
-						}
-						if (available < needed) {
-							return false;
-						}
-					} else {
-						return false;
-					}
-				} else {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		}
-		return true;
-	}
+	void fireTransition(ObjectAnnotation annotation) {
+		EnabledTransition firingTrans = (EnabledTransition) annotation;
 
-	/**
-	 * From package org.pnml.tools.epnk.tutorial.application.ptnetsimulator;
-	 * public class PTNetSimulatorApplication extends ApplicationWithUIManager {
-	 * 
-	 * @return
-	 */
-	public Map<Place, Integer> computeMarking() {
-		Map<Place, Integer> marking = new HashMap<Place, Integer>();
-		for (ObjectAnnotation annotation : this.getNetAnnotations().getCurrent().getObjectAnnotations()) {
-			if (annotation instanceof Marking) {
-				Marking markingAnnotation = (Marking) annotation;
-				Object object = markingAnnotation.getObject();
-				if (object instanceof Place && markingAnnotation.getValue() > 0) {
-					Place ptPlace = (Place) object;
-					marking.put(ptPlace, markingAnnotation.getValue());
-				}
-			}
-		}
-		return marking;
-	}
+		// Find ud af hvilke SelectArcs der er enabled og fire på dem der er
+		for (SelectArc sArc : firingTrans.getOutArcs()) {
+			System.err.println("Running SelectArcs loop");
+			if (sArc.isSelected()) {
+				Place targetPlace = (Place) ((Arc) sArc.getObject()).getTarget();
+				System.err.println(targetPlace);
+				// Enabled Selectarcs target Place skal have en Marking
+				// annotation
+				Marking placeMarking = AnnotationsFactory.eINSTANCE.createMarking();
+				placeMarking.setValue(1);
+				placeMarking.setObject(targetPlace);
+				netannotation.getObjectAnnotations().add(placeMarking);
 
-	/**
-	 * From package org.pnml.tools.epnk.tutorial.application.ptnetsimulator;
-	 * public class PTNetSimulatorApplication extends ApplicationWithUIManager {
-	 * 
-	 * @return
-	 */
-	Map<Place, Integer> fireTransition(FlatAccess flatNet, Map<Place, Integer> marking1, Transition transition) {
-		Map<Place, Integer> marking2 = new HashMap<Place, Integer>();
-		for (Place place : marking1.keySet()) {
-			marking2.put(place, marking1.put(place, marking1.get(place)));
-		}
-
-		for (Object arc : flatNet.getIn(transition)) {
-			if (arc instanceof Arc) {
-				Arc ptArc = (Arc) arc;
-				YAWLNetArcAnnotation ptArcAnnotation = ptArc.getInscription();
-				Object source = ptArc.getSource();
-				if (source instanceof PlaceNode) {
-					source = flatNet.resolve((PlaceNode) source);
-					if (source instanceof Place) {
-						Place place = (Place) source;
-						int available = 0;
-						if (marking1.containsKey(place)) {
-							available = marking1.get(place);
-						}
-						int needed = 1;
-						if (ptArcAnnotation != null) {
-							needed = ptArcAnnotation.getText().getValue();
-						}
-						marking2.put(place, available - needed);
+				// Opret ny EnabledTransition fra Place target
+				for (org.pnml.tools.epnk.pnmlcoremodel.Arc outArcPNML : targetPlace.getOut()) {
+					Arc outArc = (Arc) outArcPNML;
+					
+					Transition targetTrans = (Transition) outArc.getTarget();
+					EnabledTransition enabledTrans = AnnotationsFactory.eINSTANCE.createEnabledTransition();
+					enabledTrans.setObject(targetTrans);
+					netannotation.getObjectAnnotations().add(enabledTrans);
+					
+					// Oprette nye SelectArcs ud fra Place
+					SelectArc sArc2 = AnnotationsFactory.eINSTANCE.createSelectArc();
+					sArc2.setObject(outArc);
+					sArc2.setTargetTransition(enabledTrans);
+					netannotation.getObjectAnnotations().add(sArc2);
+					
+					// Oprette nye SelectArcs ud fra nye EnabledTransition
+					for (org.pnml.tools.epnk.pnmlcoremodel.Arc targetArcPNML : targetTrans.getOut()) {
+						Arc targetArc = (Arc) targetArcPNML;
+						
+						SelectArc sArc3 = AnnotationsFactory.eINSTANCE.createSelectArc();
+						sArc3.setObject(targetArc);
+						sArc3.setSourceTransition(enabledTrans);
+						netannotation.getObjectAnnotations().add(sArc3);
 					}
 				}
+				
 			}
+			// Fjerne gamle SelectArcs
+			netannotation.getObjectAnnotations().remove(sArc);
 		}
-
-		for (Object arc : flatNet.getOut(transition)) {
-			if (arc instanceof Arc) {
-				Arc ptArc = (Arc) arc;
-				YAWLNetArcAnnotation ptArcAnnotation = ptArc.getInscription();
-				Object target = ptArc.getTarget();
-				if (target instanceof PlaceNode) {
-					target = flatNet.resolve((PlaceNode) target);
-					if (target instanceof Place) {
-						Place place = (Place) target;
-						int available = 0;
-						if (marking1.containsKey(place)) {
-							available = marking1.get(place);
-						}
-						int provided = 1;
-						if (ptArcAnnotation != null) {
-							provided = ptArcAnnotation.getText().getValue();
-						}
-						marking2.put(place, available + provided);
-					}
-				}
-			}
-		}
-
-		return marking2;
+		// Fjern gammel EnabledTransition
+		netannotation.getObjectAnnotations().remove(firingTrans);
 	}
 
-	NetAnnotation computeAnnotation(FlatAccess flatNet, Map<Place, Integer> marking) {
-		NetAnnotation annotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
-		for (Place place : marking.keySet()) {
-			int value = marking.get(place);
-			if (value > 0) {
-				Marking markingAnnotation = AnnotationsFactory.eINSTANCE.createMarking();
-				// markingAnnotation.setText(value);
-				markingAnnotation.setValue(value);
-				markingAnnotation.setObject(place);
-				annotation.getObjectAnnotations().add(markingAnnotation);
-				// also annotate reference places with the current marking of
-				// the place
-				for (PlaceNode ref : flatNet.getRefPlaces(place)) {
-					Marking markingAnnotationRef = AnnotationsFactory.eINSTANCE.createMarking();
-					markingAnnotationRef.setValue(value);
-					markingAnnotationRef.setObject(ref);
-					annotation.getObjectAnnotations().add(markingAnnotationRef);
-				}
-			}
-		}
-
-		for (Node transition : flatNet.getTransitions()) {
-			if (transition instanceof Transition) {
-				if (enabled(flatNet, marking, (Transition) transition)) {
-					EnabledTransition transitionAnnotation = AnnotationsFactory.eINSTANCE.createEnabledTransition();
-					transitionAnnotation.setObject(transition);
-					// transitionAnnotation.setMode(Mode.ENABLED);
-					annotation.getObjectAnnotations().add(transitionAnnotation);
-				}
-			}
-		}
-		return annotation;
-	}
 }
