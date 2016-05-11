@@ -50,7 +50,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 	 * In this method, this net is available by the method getPetriNet().
 	 */
 	/**
-	 * @author Nicklas Hansen (s144858)
+	 * @author Nicklas Hansen (s144858), Stefan Hyltoft (s144872) 
+	 * With good help from @author Ekkart Kindler
 	 */
 	public void initializeContents() {
 		/*

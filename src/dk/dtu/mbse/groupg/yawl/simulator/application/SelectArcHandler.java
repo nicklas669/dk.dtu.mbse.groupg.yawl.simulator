@@ -29,7 +29,7 @@ public class SelectArcHandler implements IActionHandler {
 	}
 
 	/**
-	 * @author Nicklas Hansen (s144858)
+	 * @author Nicklas Hansen (s144858), Stefan Hyltoft (s144872)
 	 *
 	 */
 	@Override
