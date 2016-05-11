@@ -20,10 +20,9 @@ import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation;
 import yawlnet.yawltypes.Arc;
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.PlaceTypes;
@@ -88,9 +87,9 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 				if (place.getType() != null) {
 					if (place.getType().getText().getValue() == PlaceTypes.START_VALUE) {
 						// Initially only start place should have an annotation
-						PlaceMarkingAnnotation placeMarking = AnnotationsFactory.eINSTANCE.createPlaceMarkingAnnotation();
+						Marking placeMarking = AnnotationsFactory.eINSTANCE.createMarking();
+						placeMarking.setValue(1);
 						placeMarking.setObject(place);
-						placeMarking.setText(1);
 						netannotation.getObjectAnnotations().add(placeMarking);
 						
 						// Activate start place's nearest transitions...
@@ -238,12 +237,12 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 	public Map<Place, Integer> computeMarking() {
 		Map<Place, Integer> marking = new HashMap<Place, Integer>();
 		for (ObjectAnnotation annotation : this.getNetAnnotations().getCurrent().getObjectAnnotations()) {
-			if (annotation instanceof PlaceMarkingAnnotation) {
-				PlaceMarkingAnnotation markingAnnotation = (PlaceMarkingAnnotation) annotation;
+			if (annotation instanceof Marking) {
+				Marking markingAnnotation = (Marking) annotation;
 				Object object = markingAnnotation.getObject();
-				if (object instanceof Place && markingAnnotation.getText() > 0) {
+				if (object instanceof Place && markingAnnotation.getValue() > 0) {
 					Place ptPlace = (Place) object;
-					marking.put(ptPlace, markingAnnotation.getText());
+					marking.put(ptPlace, markingAnnotation.getValue());
 				}
 			}
 		}
@@ -316,16 +315,17 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		for (Place place : marking.keySet()) {
 			int value = marking.get(place);
 			if (value > 0) {
-				PlaceMarkingAnnotation markingAnnotation = AnnotationsFactory.eINSTANCE.createPlaceMarkingAnnotation();
-				markingAnnotation.setText(value);
+				Marking markingAnnotation = AnnotationsFactory.eINSTANCE.createMarking();
+//				markingAnnotation.setText(value);
+				markingAnnotation.setValue(value);
 				markingAnnotation.setObject(place);
 				annotation.getObjectAnnotations().add(markingAnnotation);
 				// also annotate reference places with the current marking of
 				// the place
 				for (PlaceNode ref : flatNet.getRefPlaces(place)) {
-					PlaceMarkingAnnotation markingAnnotationRef = AnnotationsFactory.eINSTANCE
-							.createPlaceMarkingAnnotation();
-					markingAnnotationRef.setText(value);
+					Marking markingAnnotationRef = AnnotationsFactory.eINSTANCE
+							.createMarking();
+					markingAnnotationRef.setValue(value);
 					markingAnnotationRef.setObject(ref);
 					annotation.getObjectAnnotations().add(markingAnnotationRef);
 				}
