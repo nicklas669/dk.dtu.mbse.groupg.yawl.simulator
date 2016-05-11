@@ -32,7 +32,7 @@ public class FireTransitionHandler implements IActionHandler {
 	
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
-		System.err.println("mouseDoubleClicked from FireTransitionHandler!");
+//		System.err.println("mouseDoubleClicked from FireTransitionHandler!");
 		NetAnnotations netAnnotations = application.getNetAnnotations();
 		NetAnnotation current = netAnnotations.getCurrent();
 		
@@ -47,15 +47,16 @@ public class FireTransitionHandler implements IActionHandler {
 					Map<Place,Integer> marking2 = application.fireTransition(flatNet, marking1, transition);
 					NetAnnotation netAnnotation = application.computeAnnotation(flatNet, marking2);
 					netAnnotation.setNet(application.getPetrinet());
-					List<ObjectAnnotation> clearPlaceAnnotations = new ArrayList<ObjectAnnotation>();
-					for (ObjectAnnotation objectAnnotation: current.getObjectAnnotations()) {
-						if (objectAnnotation != transitionAnnotation && objectAnnotation instanceof EnabledTransition ) {
+//					List<ObjectAnnotation> clearPlaceAnnotations = new ArrayList<ObjectAnnotation>();
+//					for (ObjectAnnotation objectAnnotation: current.getObjectAnnotations()) {
+//						if (objectAnnotation != transitionAnnotation && objectAnnotation instanceof EnabledTransition ) {
 //							((EnabledTransition) objectAnnotation).setMode(Mode.ENABLED);
-						} else if (objectAnnotation instanceof EnabledTransition) {
-							clearPlaceAnnotations.add(objectAnnotation);
-						}
-					}
-					current.getObjectAnnotations().removeAll(clearPlaceAnnotations);
+//						} else if (objectAnnotation instanceof EnabledTransition) {
+//							clearPlaceAnnotations.add(objectAnnotation);
+//						}
+//					}
+//					current.getObjectAnnotations().removeAll(clearPlaceAnnotations);
+					
 //					transitionAnnotation.setMode(Mode.FIRED);
 //					for (Arc arc: flatNet.getOut(transition)) {
 //						Object object2 = arc.getTarget();
