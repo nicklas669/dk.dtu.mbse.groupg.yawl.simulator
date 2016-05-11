@@ -62,18 +62,18 @@ public class FireTransitionHandler implements IActionHandler {
 					}
 					current.getObjectAnnotations().removeAll(clearPlaceAnnotations);
 //					transitionAnnotation.setMode(Mode.FIRED);
-					for (Arc arc: flatNet.getOut(transition)) {
-						Object object2 = arc.getTarget();
-						if (object2 instanceof PlaceNode) {
-							PlaceNode target = flatNet.resolve((PlaceNode) object2);
-							if (target != null) {
-								PlaceSelectionAnnotation placeAnnotation = AnnotationsFactory.eINSTANCE.createPlaceSelectionAnnotation();
-								placeAnnotation.setObject(target);
-								placeAnnotation.setSelected(true);
-								current.getObjectAnnotations().add(placeAnnotation);
-							}
-						}
-					}
+//					for (Arc arc: flatNet.getOut(transition)) {
+//						Object object2 = arc.getTarget();
+//						if (object2 instanceof PlaceNode) {
+//							PlaceNode target = flatNet.resolve((PlaceNode) object2);
+//							if (target != null) {
+//								PlaceSelectionAnnotation placeAnnotation = AnnotationsFactory.eINSTANCE.createPlaceSelectionAnnotation();
+//								placeAnnotation.setObject(target);
+//								placeAnnotation.setSelected(true);
+//								current.getObjectAnnotations().add(placeAnnotation);
+//							}
+//						}
+//					}
 					
 					application.deleteNetAnnotationAfterCurrent();
 					application.addNetAnnotationAsCurrent(netAnnotation);
