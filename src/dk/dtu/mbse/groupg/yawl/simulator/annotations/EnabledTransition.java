@@ -2,6 +2,7 @@
  */
 package dk.dtu.mbse.groupg.yawl.simulator.annotations;
 
+import org.eclipse.emf.common.util.EList;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 
 /**
@@ -13,8 +14,8 @@ import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getSourceTransition <em>Source Transition</em>}</li>
- *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getTargetTransition <em>Target Transition</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getOutArcs <em>Out Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getInArcs <em>In Arcs</em>}</li>
  * </ul>
  *
  * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getEnabledTransition()
@@ -23,55 +24,39 @@ import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
  */
 public interface EnabledTransition extends ObjectAnnotation {
 	/**
-	 * Returns the value of the '<em><b>Source Transition</b></em>' reference.
+	 * Returns the value of the '<em><b>Out Arcs</b></em>' reference list.
+	 * The list contents are of type {@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc}.
+	 * It is bidirectional and its opposite is '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getSourceTransition <em>Source Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source Transition</em>' reference isn't clear,
+	 * If the meaning of the '<em>Out Arcs</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Transition</em>' reference.
-	 * @see #setSourceTransition(SelectArc)
-	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getEnabledTransition_SourceTransition()
-	 * @model
+	 * @return the value of the '<em>Out Arcs</em>' reference list.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getEnabledTransition_OutArcs()
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getSourceTransition
+	 * @model opposite="sourceTransition"
 	 * @generated
 	 */
-	SelectArc getSourceTransition();
+	EList<SelectArc> getOutArcs();
 
 	/**
-	 * Sets the value of the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getSourceTransition <em>Source Transition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source Transition</em>' reference.
-	 * @see #getSourceTransition()
-	 * @generated
-	 */
-	void setSourceTransition(SelectArc value);
-
-	/**
-	 * Returns the value of the '<em><b>Target Transition</b></em>' reference.
+	 * Returns the value of the '<em><b>In Arcs</b></em>' reference list.
+	 * The list contents are of type {@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc}.
+	 * It is bidirectional and its opposite is '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getTargetTransition <em>Target Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target Transition</em>' reference isn't clear,
+	 * If the meaning of the '<em>In Arcs</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Transition</em>' reference.
-	 * @see #setTargetTransition(SelectArc)
-	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getEnabledTransition_TargetTransition()
-	 * @model
+	 * @return the value of the '<em>In Arcs</em>' reference list.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage#getEnabledTransition_InArcs()
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getTargetTransition
+	 * @model opposite="targetTransition"
 	 * @generated
 	 */
-	SelectArc getTargetTransition();
-
-	/**
-	 * Sets the value of the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getTargetTransition <em>Target Transition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Transition</em>' reference.
-	 * @see #getTargetTransition()
-	 * @generated
-	 */
-	void setTargetTransition(SelectArc value);
+	EList<SelectArc> getInArcs();
 
 } // EnabledTransition

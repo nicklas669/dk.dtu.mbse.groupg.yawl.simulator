@@ -87,22 +87,22 @@ public interface AnnotationsPackage extends EPackage {
 	int ENABLED_TRANSITION__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
 
 	/**
-	 * The feature id for the '<em><b>Source Transition</b></em>' reference.
+	 * The feature id for the '<em><b>Out Arcs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENABLED_TRANSITION__SOURCE_TRANSITION = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
+	int ENABLED_TRANSITION__OUT_ARCS = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Target Transition</b></em>' reference.
+	 * The feature id for the '<em><b>In Arcs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENABLED_TRANSITION__TARGET_TRANSITION = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
+	int ENABLED_TRANSITION__IN_ARCS = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Enabled Transition</em>' class.
@@ -151,22 +151,22 @@ public interface AnnotationsPackage extends EPackage {
 	int SELECT_ARC__SELECTED = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Out Arcs</b></em>' reference list.
+	 * The feature id for the '<em><b>Source Transition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELECT_ARC__OUT_ARCS = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
+	int SELECT_ARC__SOURCE_TRANSITION = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>In Arcs</b></em>' reference list.
+	 * The feature id for the '<em><b>Target Transition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SELECT_ARC__IN_ARCS = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 2;
+	int SELECT_ARC__TARGET_TRANSITION = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Select Arc</em>' class.
@@ -386,26 +386,26 @@ public interface AnnotationsPackage extends EPackage {
 	EClass getEnabledTransition();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getSourceTransition <em>Source Transition</em>}'.
+	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getOutArcs <em>Out Arcs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source Transition</em>'.
-	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getSourceTransition()
+	 * @return the meta object for the reference list '<em>Out Arcs</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getOutArcs()
 	 * @see #getEnabledTransition()
 	 * @generated
 	 */
-	EReference getEnabledTransition_SourceTransition();
+	EReference getEnabledTransition_OutArcs();
 
 	/**
-	 * Returns the meta object for the reference '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getTargetTransition <em>Target Transition</em>}'.
+	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getInArcs <em>In Arcs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Transition</em>'.
-	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getTargetTransition()
+	 * @return the meta object for the reference list '<em>In Arcs</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition#getInArcs()
 	 * @see #getEnabledTransition()
 	 * @generated
 	 */
-	EReference getEnabledTransition_TargetTransition();
+	EReference getEnabledTransition_InArcs();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc <em>Select Arc</em>}'.
@@ -429,26 +429,26 @@ public interface AnnotationsPackage extends EPackage {
 	EAttribute getSelectArc_Selected();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getOutArcs <em>Out Arcs</em>}'.
+	 * Returns the meta object for the reference '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getSourceTransition <em>Source Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Out Arcs</em>'.
-	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getOutArcs()
+	 * @return the meta object for the reference '<em>Source Transition</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getSourceTransition()
 	 * @see #getSelectArc()
 	 * @generated
 	 */
-	EReference getSelectArc_OutArcs();
+	EReference getSelectArc_SourceTransition();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getInArcs <em>In Arcs</em>}'.
+	 * Returns the meta object for the reference '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getTargetTransition <em>Target Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>In Arcs</em>'.
-	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getInArcs()
+	 * @return the meta object for the reference '<em>Target Transition</em>'.
+	 * @see dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc#getTargetTransition()
 	 * @see #getSelectArc()
 	 * @generated
 	 */
-	EReference getSelectArc_InArcs();
+	EReference getSelectArc_TargetTransition();
 
 	/**
 	 * Returns the meta object for class '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking <em>Marking</em>}'.
@@ -577,20 +577,20 @@ public interface AnnotationsPackage extends EPackage {
 		EClass ENABLED_TRANSITION = eINSTANCE.getEnabledTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Source Transition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Out Arcs</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ENABLED_TRANSITION__SOURCE_TRANSITION = eINSTANCE.getEnabledTransition_SourceTransition();
+		EReference ENABLED_TRANSITION__OUT_ARCS = eINSTANCE.getEnabledTransition_OutArcs();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Transition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>In Arcs</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ENABLED_TRANSITION__TARGET_TRANSITION = eINSTANCE.getEnabledTransition_TargetTransition();
+		EReference ENABLED_TRANSITION__IN_ARCS = eINSTANCE.getEnabledTransition_InArcs();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl <em>Select Arc</em>}' class.
@@ -611,20 +611,20 @@ public interface AnnotationsPackage extends EPackage {
 		EAttribute SELECT_ARC__SELECTED = eINSTANCE.getSelectArc_Selected();
 
 		/**
-		 * The meta object literal for the '<em><b>Out Arcs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Source Transition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SELECT_ARC__OUT_ARCS = eINSTANCE.getSelectArc_OutArcs();
+		EReference SELECT_ARC__SOURCE_TRANSITION = eINSTANCE.getSelectArc_SourceTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>In Arcs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Target Transition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SELECT_ARC__IN_ARCS = eINSTANCE.getSelectArc_InArcs();
+		EReference SELECT_ARC__TARGET_TRANSITION = eINSTANCE.getSelectArc_TargetTransition();
 
 		/**
 		 * The meta object literal for the '{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.MarkingImpl <em>Marking</em>}' class.

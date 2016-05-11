@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.dtu.mbse.groupg.yawl.simulator/src" modelPluginID="dk.dtu.mbse.groupg.yawl.simulator"
     modelName="Annotations" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
+    language="" usedGenPackages="../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
     importOrganizing="true">
   <foreignModel>annotations.ecore</foreignModel>
   <genPackages prefix="Annotations" basePackage="dk.dtu.mbse.groupg.yawl.simulator"
@@ -13,13 +13,13 @@
       <genEnumLiterals ecoreEnumLiteral="annotations.ecore#//Mode/fired"/>
     </genEnums>
     <genClasses ecoreClass="annotations.ecore#//EnabledTransition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/outArcs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/inArcs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/sourceTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//EnabledTransition/targetTransition"/>
     </genClasses>
     <genClasses ecoreClass="annotations.ecore#//SelectArc">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//SelectArc/selected"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//SelectArc/sourceTransition"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//SelectArc/targetTransition"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//SelectArc/selected"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//SelectArc/outArcs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference annotations.ecore#//SelectArc/inArcs"/>
     </genClasses>
     <genClasses ecoreClass="annotations.ecore#//Marking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute annotations.ecore#//Marking/value"/>

@@ -21,7 +21,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceSelectionAnnotation;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import yawlnet.yawltypes.Place;
 import yawlnet.yawltypes.Transition;
 
@@ -44,9 +44,9 @@ public class FireTransitionHandler implements IActionHandler {
 		FlatAccess flatNet = new FlatAccess(application.getPetrinet());
 		if (current.getObjectAnnotations().contains(annotation)) {
 			Object object = annotation.getObject();
-			if (object instanceof Transition && annotation instanceof TransitionActivationAnnotation) {
+			if (object instanceof Transition && annotation instanceof EnabledTransition) {
 				Transition transition = (Transition) object;
-				TransitionActivationAnnotation transitionAnnotation = ((TransitionActivationAnnotation) annotation);
+				EnabledTransition transitionAnnotation = ((EnabledTransition) annotation);
 				Map<Place,Integer> marking1 = application.computeMarking();
 				if (application.enabled(flatNet, marking1, transition)) {
 					Map<Place,Integer> marking2 = application.fireTransition(flatNet, marking1, transition);
@@ -54,14 +54,14 @@ public class FireTransitionHandler implements IActionHandler {
 					netAnnotation.setNet(application.getPetrinet());
 					List<ObjectAnnotation> clearPlaceAnnotations = new ArrayList<ObjectAnnotation>();
 					for (ObjectAnnotation objectAnnotation: current.getObjectAnnotations()) {
-						if (objectAnnotation != transitionAnnotation && objectAnnotation instanceof TransitionActivationAnnotation ) {
-							((TransitionActivationAnnotation) objectAnnotation).setMode(Mode.ENABLED);
-						} else if (objectAnnotation instanceof TransitionActivationAnnotation) {
+						if (objectAnnotation != transitionAnnotation && objectAnnotation instanceof EnabledTransition ) {
+//							((EnabledTransition) objectAnnotation).setMode(Mode.ENABLED);
+						} else if (objectAnnotation instanceof EnabledTransition) {
 							clearPlaceAnnotations.add(objectAnnotation);
 						}
 					}
 					current.getObjectAnnotations().removeAll(clearPlaceAnnotations);
-					transitionAnnotation.setMode(Mode.FIRED);
+//					transitionAnnotation.setMode(Mode.FIRED);
 					for (Arc arc: flatNet.getOut(transition)) {
 						Object object2 = arc.getTarget();
 						if (object2 instanceof PlaceNode) {

@@ -5,17 +5,12 @@ package dk.dtu.mbse.groupg.yawl.simulator.annotations.impl;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsPackage;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
-
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
 
 /**
@@ -27,8 +22,8 @@ import org.pnml.tools.epnk.annotations.netannotations.impl.ObjectAnnotationImpl;
  * </p>
  * <ul>
  *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#isSelected <em>Selected</em>}</li>
- *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#getOutArcs <em>Out Arcs</em>}</li>
- *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#getInArcs <em>In Arcs</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#getSourceTransition <em>Source Transition</em>}</li>
+ *   <li>{@link dk.dtu.mbse.groupg.yawl.simulator.annotations.impl.SelectArcImpl#getTargetTransition <em>Target Transition</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,24 +50,24 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	protected boolean selected = SELECTED_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOutArcs() <em>Out Arcs</em>}' reference list.
+	 * The cached value of the '{@link #getSourceTransition() <em>Source Transition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOutArcs()
+	 * @see #getSourceTransition()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EnabledTransition> outArcs;
+	protected EnabledTransition sourceTransition;
 
 	/**
-	 * The cached value of the '{@link #getInArcs() <em>In Arcs</em>}' reference list.
+	 * The cached value of the '{@link #getTargetTransition() <em>Target Transition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInArcs()
+	 * @see #getTargetTransition()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EnabledTransition> inArcs;
+	protected EnabledTransition targetTransition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,11 +115,16 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EnabledTransition> getOutArcs() {
-		if (outArcs == null) {
-			outArcs = new EObjectResolvingEList<EnabledTransition>(EnabledTransition.class, this, AnnotationsPackage.SELECT_ARC__OUT_ARCS);
+	public EnabledTransition getSourceTransition() {
+		if (sourceTransition != null && sourceTransition.eIsProxy()) {
+			InternalEObject oldSourceTransition = (InternalEObject)sourceTransition;
+			sourceTransition = (EnabledTransition)eResolveProxy(oldSourceTransition);
+			if (sourceTransition != oldSourceTransition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION, oldSourceTransition, sourceTransition));
+			}
 		}
-		return outArcs;
+		return sourceTransition;
 	}
 
 	/**
@@ -132,11 +132,138 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EnabledTransition> getInArcs() {
-		if (inArcs == null) {
-			inArcs = new EObjectResolvingEList<EnabledTransition>(EnabledTransition.class, this, AnnotationsPackage.SELECT_ARC__IN_ARCS);
+	public EnabledTransition basicGetSourceTransition() {
+		return sourceTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSourceTransition(EnabledTransition newSourceTransition, NotificationChain msgs) {
+		EnabledTransition oldSourceTransition = sourceTransition;
+		sourceTransition = newSourceTransition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION, oldSourceTransition, newSourceTransition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return inArcs;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSourceTransition(EnabledTransition newSourceTransition) {
+		if (newSourceTransition != sourceTransition) {
+			NotificationChain msgs = null;
+			if (sourceTransition != null)
+				msgs = ((InternalEObject)sourceTransition).eInverseRemove(this, AnnotationsPackage.ENABLED_TRANSITION__OUT_ARCS, EnabledTransition.class, msgs);
+			if (newSourceTransition != null)
+				msgs = ((InternalEObject)newSourceTransition).eInverseAdd(this, AnnotationsPackage.ENABLED_TRANSITION__OUT_ARCS, EnabledTransition.class, msgs);
+			msgs = basicSetSourceTransition(newSourceTransition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION, newSourceTransition, newSourceTransition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnabledTransition getTargetTransition() {
+		if (targetTransition != null && targetTransition.eIsProxy()) {
+			InternalEObject oldTargetTransition = (InternalEObject)targetTransition;
+			targetTransition = (EnabledTransition)eResolveProxy(oldTargetTransition);
+			if (targetTransition != oldTargetTransition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION, oldTargetTransition, targetTransition));
+			}
+		}
+		return targetTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnabledTransition basicGetTargetTransition() {
+		return targetTransition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTargetTransition(EnabledTransition newTargetTransition, NotificationChain msgs) {
+		EnabledTransition oldTargetTransition = targetTransition;
+		targetTransition = newTargetTransition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION, oldTargetTransition, newTargetTransition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTargetTransition(EnabledTransition newTargetTransition) {
+		if (newTargetTransition != targetTransition) {
+			NotificationChain msgs = null;
+			if (targetTransition != null)
+				msgs = ((InternalEObject)targetTransition).eInverseRemove(this, AnnotationsPackage.ENABLED_TRANSITION__IN_ARCS, EnabledTransition.class, msgs);
+			if (newTargetTransition != null)
+				msgs = ((InternalEObject)newTargetTransition).eInverseAdd(this, AnnotationsPackage.ENABLED_TRANSITION__IN_ARCS, EnabledTransition.class, msgs);
+			msgs = basicSetTargetTransition(newTargetTransition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION, newTargetTransition, newTargetTransition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION:
+				if (sourceTransition != null)
+					msgs = ((InternalEObject)sourceTransition).eInverseRemove(this, AnnotationsPackage.ENABLED_TRANSITION__OUT_ARCS, EnabledTransition.class, msgs);
+				return basicSetSourceTransition((EnabledTransition)otherEnd, msgs);
+			case AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION:
+				if (targetTransition != null)
+					msgs = ((InternalEObject)targetTransition).eInverseRemove(this, AnnotationsPackage.ENABLED_TRANSITION__IN_ARCS, EnabledTransition.class, msgs);
+				return basicSetTargetTransition((EnabledTransition)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION:
+				return basicSetSourceTransition(null, msgs);
+			case AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION:
+				return basicSetTargetTransition(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -149,10 +276,12 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 		switch (featureID) {
 			case AnnotationsPackage.SELECT_ARC__SELECTED:
 				return isSelected();
-			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
-				return getOutArcs();
-			case AnnotationsPackage.SELECT_ARC__IN_ARCS:
-				return getInArcs();
+			case AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION:
+				if (resolve) return getSourceTransition();
+				return basicGetSourceTransition();
+			case AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION:
+				if (resolve) return getTargetTransition();
+				return basicGetTargetTransition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -169,13 +298,11 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 			case AnnotationsPackage.SELECT_ARC__SELECTED:
 				setSelected((Boolean)newValue);
 				return;
-			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
-				getOutArcs().clear();
-				getOutArcs().addAll((Collection<? extends EnabledTransition>)newValue);
+			case AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION:
+				setSourceTransition((EnabledTransition)newValue);
 				return;
-			case AnnotationsPackage.SELECT_ARC__IN_ARCS:
-				getInArcs().clear();
-				getInArcs().addAll((Collection<? extends EnabledTransition>)newValue);
+			case AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION:
+				setTargetTransition((EnabledTransition)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -192,11 +319,11 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 			case AnnotationsPackage.SELECT_ARC__SELECTED:
 				setSelected(SELECTED_EDEFAULT);
 				return;
-			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
-				getOutArcs().clear();
+			case AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION:
+				setSourceTransition((EnabledTransition)null);
 				return;
-			case AnnotationsPackage.SELECT_ARC__IN_ARCS:
-				getInArcs().clear();
+			case AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION:
+				setTargetTransition((EnabledTransition)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -212,10 +339,10 @@ public class SelectArcImpl extends ObjectAnnotationImpl implements SelectArc {
 		switch (featureID) {
 			case AnnotationsPackage.SELECT_ARC__SELECTED:
 				return selected != SELECTED_EDEFAULT;
-			case AnnotationsPackage.SELECT_ARC__OUT_ARCS:
-				return outArcs != null && !outArcs.isEmpty();
-			case AnnotationsPackage.SELECT_ARC__IN_ARCS:
-				return inArcs != null && !inArcs.isEmpty();
+			case AnnotationsPackage.SELECT_ARC__SOURCE_TRANSITION:
+				return sourceTransition != null;
+			case AnnotationsPackage.SELECT_ARC__TARGET_TRANSITION:
+				return targetTransition != null;
 		}
 		return super.eIsSet(featureID);
 	}

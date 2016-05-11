@@ -3,16 +3,18 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="annotations" nsURI="http://www2.compute.dtu.dk/annotations"
     nsPrefix="anno">
   <eClassifiers xsi:type="ecore:EClass" name="EnabledTransition" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTransition" eType="#//SelectArc"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTransition" eType="#//SelectArc"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
+        eType="#//SelectArc" eOpposite="#//SelectArc/sourceTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inArcs" upperBound="-1"
+        eType="#//SelectArc" eOpposite="#//SelectArc/targetTransition"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectArc" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="selected" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
-        eType="#//EnabledTransition"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inArcs" upperBound="-1"
-        eType="#//EnabledTransition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTransition" eType="#//EnabledTransition"
+        eOpposite="#//EnabledTransition/outArcs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTransition" eType="#//EnabledTransition"
+        eOpposite="#//EnabledTransition/inArcs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Marking" eSuperTypes="../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//ObjectAnnotation ../org.pnml.tools.epnk.annotations/model/NetAnnotations.ecore#//TextualAnnotation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"

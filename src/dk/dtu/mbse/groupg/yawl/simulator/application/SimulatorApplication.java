@@ -19,6 +19,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
+import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.Mode;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.PlaceMarkingAnnotation;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
@@ -99,8 +100,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 							// Create an annotation for each transition connected to start place
 							Arc arc = (Arc) arcIterator.next();
 							Transition trans = (Transition) arc.getTarget();
-							TransitionActivationAnnotation enabledTrans = AnnotationsFactory.eINSTANCE
-									.createTransitionActivationAnnotation();
+							EnabledTransition enabledTrans = AnnotationsFactory.eINSTANCE
+									.createEnabledTransition();
 							enabledTrans.setObject(trans);
 							netannotation.getObjectAnnotations().add(enabledTrans);
 							
@@ -334,10 +335,10 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		for (Node transition : flatNet.getTransitions()) {
 			if (transition instanceof Transition) {
 				if (enabled(flatNet, marking, (Transition) transition)) {
-					dk.dtu.mbse.groupg.yawl.simulator.annotations.TransitionActivationAnnotation transitionAnnotation = AnnotationsFactory.eINSTANCE
-							.createTransitionActivationAnnotation();
+					EnabledTransition transitionAnnotation = AnnotationsFactory.eINSTANCE
+							.createEnabledTransition();
 					transitionAnnotation.setObject(transition);
-					transitionAnnotation.setMode(Mode.ENABLED);
+//					transitionAnnotation.setMode(Mode.ENABLED);
 					annotation.getObjectAnnotations().add(transitionAnnotation);
 				}
 			}
