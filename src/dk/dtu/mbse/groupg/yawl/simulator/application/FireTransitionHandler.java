@@ -1,6 +1,6 @@
 /**
  * Handler for firing a transition.
- * @author Nicklas Hansen (s144858)
+ * @author Ekkart Kindler
  * Large parts copied from Ekkart Kindler's example in the epnk tutorials pt-net-simulator!
  */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
@@ -32,7 +32,7 @@ public class FireTransitionHandler implements IActionHandler {
 
 	public FireTransitionHandler(SimulatorApplication application) {
 		super();		
-		this.application = application;
+		this.application = application;	
 	}
 	
 	@Override
