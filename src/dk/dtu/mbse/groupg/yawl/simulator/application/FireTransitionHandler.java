@@ -1,28 +1,16 @@
 /**
  * Handler for firing a transition.
- * @author Ekkart Kindler
- * Large parts copied from Ekkart Kindler's example in the epnk tutorials pt-net-simulator!
+ * @author Nicklas Hansen (s144858)
+ * Inspiration from Ekkart Kindler's example in the epnk tutorials pt-net-simulator!
  */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.eclipse.draw2d.MouseEvent;
-import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
-import org.pnml.tools.epnk.annotations.netannotations.NetAnnotations;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ui.IActionHandler;
-import org.pnml.tools.epnk.helpers.FlatAccess;
 
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.Marking;
-import dk.dtu.mbse.groupg.yawl.simulator.annotations.SelectArc;
-import yawlnet.yawltypes.Arc;
-import yawlnet.yawltypes.Place;
-import yawlnet.yawltypes.Transition;
 
 
 public class FireTransitionHandler implements IActionHandler {

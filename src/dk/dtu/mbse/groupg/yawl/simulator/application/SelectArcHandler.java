@@ -44,6 +44,7 @@ public class SelectArcHandler implements IActionHandler {
 		 */
 		// System.err.println("mousePressed from SelectArcHandler!");
 		if (annotation instanceof SelectArc) {
+			System.err.println("Mouseclick on selectarc!");
 			SelectArc pressedArcAnnotation = (SelectArc) annotation;
 			int changeInArc = 0;
 			if (pressedArcAnnotation.isSelected()) {
@@ -52,97 +53,122 @@ public class SelectArcHandler implements IActionHandler {
 			} else {
 				changeInArc = 1;
 			}
+			// If Arc is coming out of a Transition
+			if (pressedArcAnnotation.getSourceTransition() != null) {
+				System.err.println("getSourceTransition() != null");
+				// Get the source Transition Annotation behind SelectArc
+				// annotation
+				EnabledTransition sourceTransAnnotation = pressedArcAnnotation.getSourceTransition();
+				Transition sourceTrans = (Transition) sourceTransAnnotation.getObject();
+				int requiredArcsSelected = 0;
 
-			// pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
-
-			// Get the source Transition Annotation behind SelectArc annotation
-			EnabledTransition sourceTransAnnotation = pressedArcAnnotation.getSourceTransition();
-			Transition sourceTrans = (Transition) sourceTransAnnotation.getObject();
-			int requiredArcsSelected = 0;
-
-			// Calculate number of currently enabled/selected arcs
-			int selectedArcs = 0;
-			Iterator<SelectArc> selectArcIt = sourceTransAnnotation.getOutArcs().iterator();
-			while (selectArcIt.hasNext()) {
-				SelectArc selArc = selectArcIt.next();
-				if (selArc.isSelected()) {
-					selectedArcs++;
+				// Calculate number of currently enabled/selected arcs
+				int selectedArcs = 0;
+				Iterator<SelectArc> selectArcIt = sourceTransAnnotation.getOutArcs().iterator();
+				while (selectArcIt.hasNext()) {
+					SelectArc selArc = selectArcIt.next();
+					if (selArc.isSelected()) {
+						selectedArcs++;
+					}
 				}
-			}
 
-			// For split transitions
-			TransitionType transitionType = sourceTrans.getSplit();
-			int transType;
-			if (transitionType != null) {
-			transType = transitionType.getText().getValue();
-				switch (transType) {
-				case TransitionTypes.OR_VALUE:
-					requiredArcsSelected = 1;
-					if ((selectedArcs + changeInArc) >= requiredArcsSelected) {
-						pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
-					}
-					break;
-				case TransitionTypes.AND_VALUE:
-					requiredArcsSelected = sourceTrans.getOut().size();
-					if ((selectedArcs + changeInArc) == requiredArcsSelected) {
-						pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
-					} else {
-						pressedArcAnnotation.setSelected(true);
-					}
-					break;
-				case TransitionTypes.XOR_VALUE:
-					requiredArcsSelected = 1;
-					if (selectedArcs >= requiredArcsSelected) {
-						for (SelectArc sarc : sourceTransAnnotation.getOutArcs()) {
-							sarc.setSelected(false);
+				// For split transitions
+				TransitionType transitionType = sourceTrans.getSplit();
+				int transType;
+				if (transitionType != null) {
+					transType = transitionType.getText().getValue();
+					switch (transType) {
+					case TransitionTypes.OR_VALUE:
+						requiredArcsSelected = 1;
+						if ((selectedArcs + changeInArc) >= requiredArcsSelected) {
+							pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
 						}
-						pressedArcAnnotation.setSelected(true);
-					} else {
-						pressedArcAnnotation.setSelected(true);
-					}
-					break;
-				}
-			}
-
-			// For join transitions
-			transitionType = sourceTrans.getJoin();
-			if (transitionType != null) {
-			transType = transitionType.getText().getValue();
-				switch (transType) {
-				case TransitionTypes.OR_VALUE:
-					requiredArcsSelected = 1;
-					if ((selectedArcs + changeInArc) >= requiredArcsSelected) {
-						pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
-					}
-					break;
-				case TransitionTypes.AND_VALUE:
-					requiredArcsSelected = sourceTrans.getIn().size();
-					if ((selectedArcs + changeInArc) == requiredArcsSelected) {
-						pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
-					} else {
-						pressedArcAnnotation.setSelected(true);
-					}
-					break;
-				case TransitionTypes.XOR_VALUE:
-					requiredArcsSelected = 1;
-					if (selectedArcs >= requiredArcsSelected) {
-						for (SelectArc sarc : sourceTransAnnotation.getInArcs()) {
-							sarc.setSelected(false);
+						break;
+					case TransitionTypes.AND_VALUE:
+						requiredArcsSelected = sourceTrans.getOut().size();
+						if ((selectedArcs + changeInArc) == requiredArcsSelected) {
+							pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
+						} else {
+							pressedArcAnnotation.setSelected(true);
 						}
-						pressedArcAnnotation.setSelected(true);
-					} else {
-						pressedArcAnnotation.setSelected(true);
+						break;
+					case TransitionTypes.XOR_VALUE:
+						requiredArcsSelected = 1;
+						if (selectedArcs >= requiredArcsSelected) {
+							for (SelectArc sarc : sourceTransAnnotation.getOutArcs()) {
+								sarc.setSelected(false);
+							}
+							pressedArcAnnotation.setSelected(true);
+						} else {
+							pressedArcAnnotation.setSelected(true);
+						}
+						break;
 					}
-					break;
+				} else {
+					// Transition type was null!
+					System.err.println("Transition type is null!");
 				}
+				application.update();
+				return true;
+			}
+			// If Arc is coming out of a Place
+			else if (pressedArcAnnotation.getTargetTransition() != null) {
+				System.err.println("getTargetTransition() != null");
+				// Get the target Transition Annotation in front of SelectArc annotation
+				EnabledTransition targetTransAnnotation = pressedArcAnnotation.getTargetTransition();
+				Transition targetTrans = (Transition) targetTransAnnotation.getObject();
+				int requiredArcsSelected = 0;
+
+				// Calculate number of currently enabled/selected arcs
+				int selectedArcs = 0;
+				Iterator<SelectArc> selectArcIt = targetTransAnnotation.getInArcs().iterator();
+				while (selectArcIt.hasNext()) {
+					SelectArc selArc = selectArcIt.next();
+					if (selArc.isSelected()) {
+						selectedArcs++;
+					}
+				}
+				// Only interested in join when coming from a Place to a Transition
+				// For join transitions
+				TransitionType transitionType = targetTrans.getJoin();
+				int transType;
+				if (transitionType != null) {
+					transType = transitionType.getText().getValue();
+					switch (transType) {
+					case TransitionTypes.OR_VALUE:
+						requiredArcsSelected = 1;
+						if ((selectedArcs + changeInArc) >= requiredArcsSelected) {
+							pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
+						}
+						break;
+					case TransitionTypes.AND_VALUE:
+						requiredArcsSelected = targetTrans.getIn().size();
+						if ((selectedArcs + changeInArc) == requiredArcsSelected) {
+							pressedArcAnnotation.setSelected(!pressedArcAnnotation.isSelected());
+						} else {
+							pressedArcAnnotation.setSelected(true);
+						}
+						break;
+					case TransitionTypes.XOR_VALUE:
+						requiredArcsSelected = 1;
+						if (selectedArcs >= requiredArcsSelected) {
+							for (SelectArc sarc : targetTransAnnotation.getInArcs()) {
+								sarc.setSelected(false);
+							}
+							pressedArcAnnotation.setSelected(true);
+						} else {
+							pressedArcAnnotation.setSelected(true);
+						}
+						break;
+					}
+				} else {
+					// Transition type was null!
+					System.err.println("Transition type is null!");
+				}
+				application.update();
+				return true;
 			}
 
-			// Need to make sure that the selection of all arcs of a transition
-			// is consistent
-			// (i.e. exactly one arc selected for XOR-joins or -split and at
-			// least one arc selected for OR-splits)
-			application.update();
-			return true;
 		}
 		return false;
 	}
