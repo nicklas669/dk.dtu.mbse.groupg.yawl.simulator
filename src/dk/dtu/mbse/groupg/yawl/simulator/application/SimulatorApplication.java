@@ -161,7 +161,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		EnabledTransition firingTrans = (EnabledTransition) annotation;
 	
 		// Create new Netannotation
-		NetAnnotation newNetannotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
+		NetAnnotation newNetannotation = NetannotationsFactory.eINSTANCE
+				.createNetAnnotation();
 		newNetannotation.setNet(getPetrinet());
 		
 		NetAnnotation currNetannotation = this.getNetAnnotations().getCurrent();
@@ -190,7 +191,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 					SelectArc sArc2 = AnnotationsFactory.eINSTANCE.createSelectArc();
 					sArc2.setObject(outArc);
 					sArc2.setTargetTransition(enabledTrans);
-					// Always enable the one selectArc if both split and join are null (meaning it must be a Single transition)
+					// Always enable the one selectArc if both split and join are null 
+					// (meaning it must be a Single transition)
 					if (targetTrans.getSplit() == null && targetTrans.getJoin() == null) sArc2.setSelected(true);
 					newNetannotation.getObjectAnnotations().add(sArc2);
 					

@@ -42,7 +42,6 @@ public class SelectArcHandler implements IActionHandler {
 		 * arcs of a transition is consistent (i.e. exactly one arc selected for
 		 * XOR-joins or -split and at least one arc selected for OR-splits
 		 */
-		// System.err.println("mousePressed from SelectArcHandler!");
 		if (annotation instanceof SelectArc) {
 			SelectArc pressedArcAnnotation = (SelectArc) annotation;
 			int changeInArc = 0;
@@ -54,8 +53,7 @@ public class SelectArcHandler implements IActionHandler {
 			}
 			// If Arc is coming out of a Transition
 			if (pressedArcAnnotation.getSourceTransition() != null) {
-				// Get the source Transition Annotation behind SelectArc
-				// annotation
+				// Get the source Transition Annotation behind SelectArc annotation
 				EnabledTransition sourceTransAnnotation = pressedArcAnnotation.getSourceTransition();
 				Transition sourceTrans = (Transition) sourceTransAnnotation.getObject();
 				int requiredArcsSelected = 0;
