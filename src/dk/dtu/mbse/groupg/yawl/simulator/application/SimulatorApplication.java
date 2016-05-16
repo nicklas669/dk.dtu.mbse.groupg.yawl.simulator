@@ -37,7 +37,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 	/**
 	 * Create a constructor for this class with Petri net as its parameter
 	 * 
-	 * @author Nicklas Hansen (s144858)
+	 * @author Nicklas Hansen (s144858), Emil Hvid
 	 * @param petrinet
 	 */
 	public SimulatorApplication(PetriNet petrinet) {

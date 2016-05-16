@@ -1,6 +1,6 @@
 /**
  * Handler responsible for handling mouse-clicks on SelectArc annotations
- * @author Nicklas Hansen (s144858)
+ * @author Nicklas Hansen (s144858), Emil Hvid
  *
  */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
