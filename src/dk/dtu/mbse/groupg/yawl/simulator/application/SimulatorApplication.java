@@ -34,7 +34,6 @@ import yawlnet.yawltypes.YAWLNetArcAnnotation;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
 
-//	NetAnnotation netannotation;
 	/**
 	 * Create a constructor for this class with Petri net as its parameter
 	 * 
@@ -55,8 +54,8 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 	 * In this method, this net is available by the method getPetriNet().
 	 */
 	/**
-	 * @author Nicklas Hansen (s144858), Stefan Hyltoft (s144872) With good help
-	 *         from @author Ekkart Kindler
+	 * @author Nicklas Hansen (s144858), Stefan Hyltoft (s144872) 
+	 * 
 	 */
 	public void initializeContents() {
 //		 In order to add the object annotations to somewhere, create a new net
@@ -86,9 +85,16 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 						// iterate over them
 						Iterator<org.pnml.tools.epnk.pnmlcoremodel.Arc> arcIterator = place.getOut().iterator();
 						while (arcIterator.hasNext()) {
+							Arc arc = (Arc) arcIterator.next();
+							
+							// Create an annotation on each Arc going out of start place
+							SelectArc sArcFromPlace = AnnotationsFactory.eINSTANCE.createSelectArc();
+							sArcFromPlace.setObject(arc);
+							netannotation.getObjectAnnotations().add(sArcFromPlace);
+							
 							// Create an annotation for each transition
 							// connected to start place
-							Arc arc = (Arc) arcIterator.next();
+							
 							Transition trans = (Transition) arc.getTarget();
 							EnabledTransition enabledTrans = AnnotationsFactory.eINSTANCE.createEnabledTransition();
 							enabledTrans.setObject(trans);
@@ -160,25 +166,25 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 	 */
 	void fireTransition(ObjectAnnotation annotation) {
 		EnabledTransition firingTrans = (EnabledTransition) annotation;
-		
+	
+		// Create new Netannotation
 		NetAnnotation newNetannotation = NetannotationsFactory.eINSTANCE.createNetAnnotation();
 		newNetannotation.setNet(getPetrinet());
+		
 		NetAnnotation currNetannotation = this.getNetAnnotations().getCurrent();
-
-		// Find ud af hvilke SelectArcs der er enabled og fire på dem der er
+		
+		// Find out which SelectArcs are enabled and fire those that are
 		for (SelectArc sArc : firingTrans.getOutArcs()) {
-			System.err.println("Running SelectArcs loop");
 			if (sArc.isSelected()) {
 				Place targetPlace = (Place) ((Arc) sArc.getObject()).getTarget();
 				System.err.println(targetPlace);
-				// Enabled Selectarcs target Place skal have en Marking
-				// annotation
+				// Enabled Selectarcs target Place should get a Marking annotation
 				Marking placeMarking = AnnotationsFactory.eINSTANCE.createMarking();
 				placeMarking.setValue(1);
 				placeMarking.setObject(targetPlace);
 				newNetannotation.getObjectAnnotations().add(placeMarking);
 
-				// Opret ny EnabledTransition fra Place target
+				// Create new EnabledTransition from Place target
 				for (org.pnml.tools.epnk.pnmlcoremodel.Arc outArcPNML : targetPlace.getOut()) {
 					Arc outArc = (Arc) outArcPNML;
 					
@@ -187,7 +193,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 					enabledTrans.setObject(targetTrans);
 					newNetannotation.getObjectAnnotations().add(enabledTrans);
 					
-					// Oprette nye SelectArcs ud fra Place
+					// Create new SelectArcs from Place
 					SelectArc sArc2 = AnnotationsFactory.eINSTANCE.createSelectArc();
 					sArc2.setObject(outArc);
 					sArc2.setTargetTransition(enabledTrans);
@@ -195,7 +201,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 					if (targetTrans.getSplit() == null && targetTrans.getJoin() == null) sArc2.setSelected(true);
 					newNetannotation.getObjectAnnotations().add(sArc2);
 					
-					// Oprette nye SelectArcs ud fra nye EnabledTransition
+					// Create new SelectsArcs going out of the new EnabledTransition
 					for (org.pnml.tools.epnk.pnmlcoremodel.Arc targetArcPNML : targetTrans.getOut()) {
 						Arc targetArc = (Arc) targetArcPNML;
 						
@@ -208,13 +214,12 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 					}
 				}
 			}
-			// Fjerne gamle SelectArcs
+			// Remove old SelectArcs
 //			netannotation.getObjectAnnotations().remove(sArc);
 		}
-		// Fjern gammel EnabledTransition
+		// Remove old EnabledTransition
 //		netannotation.getObjectAnnotations().remove(firingTrans);
 		this.getNetAnnotations().getNetAnnotations().add(newNetannotation);
 		this.getNetAnnotations().setCurrent(newNetannotation);
-		//this.update();
 	}
 }

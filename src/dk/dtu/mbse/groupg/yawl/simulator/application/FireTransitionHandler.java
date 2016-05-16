@@ -25,33 +25,10 @@ public class FireTransitionHandler implements IActionHandler {
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
 		if (annotation instanceof EnabledTransition) {
-			System.err.println("Doubleclicked an EnabledTransition!");
+			// firing is handled in the SimulatorApplication class
 			application.fireTransition(annotation);
 		}
 			
-			
-//		System.err.println("mouseDoubleClicked from FireTransitionHandler!");
-//		NetAnnotations netAnnotations = application.getNetAnnotations();
-//		NetAnnotation current = netAnnotations.getCurrent();
-//		
-//		FlatAccess flatNet = new FlatAccess(application.getPetrinet());
-		
-//		if (current.getObjectAnnotations().contains(annotation)) {
-//			Object object = annotation.getObject();
-//			if (object instanceof Transition && annotation instanceof EnabledTransition) {
-//				Transition transition = (Transition) object;
-//				EnabledTransition transitionAnnotation = ((EnabledTransition) annotation);
-//				Map<Place,Integer> marking1 = application.computeMarking();
-//				if (application.enabled(flatNet, marking1, transition)) {
-//					Map<Place,Integer> marking2 = application.fireTransition(flatNet, marking1, transition);
-//					NetAnnotation netAnnotation = application.computeAnnotation(flatNet, marking2);
-//					netAnnotation.setNet(application.getPetrinet());
-//					application.deleteNetAnnotationAfterCurrent();
-//					application.addNetAnnotationAsCurrent(netAnnotation);
-//					return true;
-//				}
-//			}
-//		}
 		// this should not happen (or only when the net is changed while simulating);
 		// could do something to fix this here-
 		return false;
