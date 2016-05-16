@@ -44,7 +44,6 @@ public class SelectArcHandler implements IActionHandler {
 		 */
 		// System.err.println("mousePressed from SelectArcHandler!");
 		if (annotation instanceof SelectArc) {
-//			System.err.println("Mouseclick on selectarc!");
 			SelectArc pressedArcAnnotation = (SelectArc) annotation;
 			int changeInArc = 0;
 			if (pressedArcAnnotation.isSelected()) {
@@ -55,7 +54,6 @@ public class SelectArcHandler implements IActionHandler {
 			}
 			// If Arc is coming out of a Transition
 			if (pressedArcAnnotation.getSourceTransition() != null) {
-//				System.err.println("getSourceTransition() != null");
 				// Get the source Transition Annotation behind SelectArc
 				// annotation
 				EnabledTransition sourceTransAnnotation = pressedArcAnnotation.getSourceTransition();
@@ -113,7 +111,6 @@ public class SelectArcHandler implements IActionHandler {
 			}
 			// If Arc is coming out of a Place
 			else if (pressedArcAnnotation.getTargetTransition() != null) {
-//				System.err.println("getTargetTransition() != null");
 				// Get the target Transition Annotation in front of SelectArc annotation
 				EnabledTransition targetTransAnnotation = pressedArcAnnotation.getTargetTransition();
 				Transition targetTrans = (Transition) targetTransAnnotation.getObject();
