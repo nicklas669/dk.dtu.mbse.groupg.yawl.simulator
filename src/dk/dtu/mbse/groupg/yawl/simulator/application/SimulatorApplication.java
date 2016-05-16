@@ -5,20 +5,14 @@
  */
 package dk.dtu.mbse.groupg.yawl.simulator.application;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
-import org.eclipse.gef.requests.TargetRequest;
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
 import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ApplicationWithUIManager;
 import org.pnml.tools.epnk.applications.ui.ApplicationUIManager;
-import org.pnml.tools.epnk.helpers.FlatAccess;
-import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
-import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.AnnotationsFactory;
 import dk.dtu.mbse.groupg.yawl.simulator.annotations.EnabledTransition;
@@ -30,7 +24,6 @@ import yawlnet.yawltypes.PlaceTypes;
 import yawlnet.yawltypes.Transition;
 import yawlnet.yawltypes.TransitionType;
 import yawlnet.yawltypes.TransitionTypes;
-import yawlnet.yawltypes.YAWLNetArcAnnotation;
 
 public class SimulatorApplication extends ApplicationWithUIManager {
 
@@ -177,7 +170,7 @@ public class SimulatorApplication extends ApplicationWithUIManager {
 		for (SelectArc sArc : firingTrans.getOutArcs()) {
 			if (sArc.isSelected()) {
 				Place targetPlace = (Place) ((Arc) sArc.getObject()).getTarget();
-				System.err.println(targetPlace);
+//				System.err.println(targetPlace);
 				// Enabled Selectarcs target Place should get a Marking annotation
 				Marking placeMarking = AnnotationsFactory.eINSTANCE.createMarking();
 				placeMarking.setValue(1);
